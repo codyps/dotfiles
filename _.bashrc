@@ -4,7 +4,6 @@
 
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
-unset color_prompt force_color_prompt
 shopt -s histappend globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -29,7 +28,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace

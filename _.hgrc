@@ -1,0 +1,14 @@
+[web]
+cacerts=/etc/ssl/certs/ca-certificates.crt
+
+[extensions]
+churn=
+progress=
+rebase=
+fetch=
+convert=
+purge=
+pager=
+graphlog=
+hgk=
+color=
