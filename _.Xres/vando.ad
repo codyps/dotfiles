@@ -1,0 +1,37 @@
+!!! Cursor      ------------------------------------
+Xcursor.theme:                          Vanilla-DMZ-AA
+
+
+!!! URxvt       ------------------------------------
+! -- URxvt style
+URxvt.termName:                         rxvt-256color
+URxvt.title:                            urxvt
+URxvt.background:                       #000000
+URxvt.foreground:                       #bde090
+URxvt.cursorColor:                      #bde090
+URxvt.font:                             xft:dina:size=11pt:antialias=true:hinting=true
+URxvt.boldFont:                         xft:dina:size=11pt:antialias=true:hinting=true:style=bold
+URxvt.shading:                          100
+URxvt.inheritPixmap:                    False
+URxvt.cursorBlink:                      False
+URxvt.scrollBar:                        False
+URxvt.colorUL:                          #729fcf
+URxvt.iconFile:                         /home/vando/.icons/apps/terminal-icon.png
+! -- URxvt perl-ext
+URxvt.perl-ext:                         default,matcher,clipboard,url-select
+URxvt.keysym.C-Insert:                  perl:clipboard:copy
+URxvt.keysym.S-Insert:                  perl:clipboard:paste
+URxvt.keysym.M-Insert:                  perl:clipboard:paste_escaped
+URxvt.keysym.M-s:                       perl:url-select:select_next
+URxvt.urlLauncher:                      /home/vando/.bin/www.sh
+URxvt.underlineURLs:                    False
+URxvt.matcher.button:                   1
+URxvt.matcher.pattern.0:                \\b(?:(?:https?|ftp):\/\/|mailto:)[\\w\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [\\w\-\@;\/?:&=%\$_+!*\x27()~]
+URxvt.matcher.pattern.1:                \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.matcher.pattern.2:                \\bhttps?:\/\/[\\w-.]*\/[\\w./?&@#-]*.(jpg|jpeg|gif|png)
+URxvt.matcher.launcher.2:               feh $0
+URxvt.cutchars:                         "'()*<>[]{|}
+
+
+!!! terminal colors     ----------------------------
+#include ".Xdefaults_van.color"
