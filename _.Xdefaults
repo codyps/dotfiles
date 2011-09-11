@@ -1,8 +1,19 @@
-Rxvt*scrollBar: false
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.antialias:  1
+Xft.rgba:       rgb
+Xft.hinting:    1
+Xft.hintstyle:  hintfull
+Xft.dpi: 96
 
+Rxvt*scrollBar: false
+Rxvt*termName: rxvt-256color
+Rxvt*xftAntialias: true
+Rxvt*font: xft:Bitstream Vera Sans Mono-9.5
+!Rxvt*foreground: LightGray
+!Rxvt*background: DimGray
 !Rxvt*foreground: LightGray
 !Rxvt*background: DimGray
 
-
-Rxvt*foreground: LightGray
-Rxvt*background: DimGray
+# include ".Xres/tango.ad"
+# include ".Xres/xss_2.ad"
