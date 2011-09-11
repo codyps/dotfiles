@@ -1,9 +1,3 @@
-Xft.dpi:                    96
-Xft.antialias:           true
-Xft.hinting:              full
-Xft.hintstyle:           hintslight
-Xft.rgba:                  rgb
-
 c64*font:                xft:Adore64:autohint=false:antialias=false:size=7
 c64*background:          #3a319c
 c64*foreground:          #7b71d6

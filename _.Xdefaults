@@ -15,5 +15,5 @@ Rxvt*font: xft:Bitstream Vera Sans Mono-9.5
 !Rxvt*foreground: LightGray
 !Rxvt*background: DimGray
 
-# include ".Xres/tango.ad"
+# include ".Xres/rstrcogburn.ad"
 # include ".Xres/xss_2.ad"
