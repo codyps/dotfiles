@@ -45,7 +45,7 @@ urxvt*boldFont:          xft:profont:pixelsize=11
 !urxvt*boldFont:          -proggytiny-*-*-*-*-10-*-*-*-*-*-*-*
 !urxvt.font:              xft:proggytiny:pixelsize=10
 !urxvt*boldFont:          xft:proggytiny:pixelsize=10
-urxvt.termName:          xterm
+urxvt.termName:          rxvt-unicode-256color
 urxvt.scrollBar:         false
 !urxvt.backgroundPixmap:  /home/vermaden/.themes/urxvt.back.xpm
 urxvt.imLocale:          en_US.UTF-8
