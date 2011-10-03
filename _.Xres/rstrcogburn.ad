@@ -40,7 +40,7 @@ xterm*saveLines:         512
 !urxvt.font:              xft:Dina:pixelsize=10
 !urxvt*boldFont:          xft:Dina:pixelsize=10
 urxvt.font:              xft:profont:pixelsize=11
-urxvt*boldFont:          xft:profont:pixelsize=11
+!urxvt*boldFont:          xft:profont:pixelsize=11
 !URxvt*font:              -proggytiny-*-*-*-*-10-*-*-*-*-*-*-*
 !urxvt*boldFont:          -proggytiny-*-*-*-*-10-*-*-*-*-*-*-*
 !urxvt.font:              xft:proggytiny:pixelsize=10
@@ -53,7 +53,7 @@ urxvt.imLocale:          en_US.UTF-8
 urxvt.loginShell:        true
 urxvt.saveLines:         512
 !urxvt.geometry:          100x30
-urxvt.boldMode:          false
+!urxvt.boldMode:          false
 urxvt.inheritPixmap:     false
 urxvt.shading:           40
 urxvt.xftAntialias:      false
@@ -73,7 +73,7 @@ urxvt.underlineColor:    #999999
 urxvt.borderless:        true 
 
 rxvt*font:*-*-fixed-medium-r-normal--*-110-*-*-*-*-iso8859-1
-rxvt*boldFont:*-*-fixed-medium-r-normal--*-110-*-*-*-*-iso8859-1
+!rxvt*boldFont:*-*-fixed-medium-r-normal--*-110-*-*-*-*-iso8859-1
 !urxvt.font:              xft:Inconsolata:size=9
 !urxvt*boldFont:          xft:Inconsolata:size=9
 !urxvt.font:              xft:montecarlo:pixelsize=7
@@ -88,7 +88,7 @@ rxvt.imLocale:          en_US.UTF-8
 rxvt.loginShell:        true
 rxvt.saveLines:         512
 rxvt.geometry:          100x30
-rxvt.boldMode:          false
+!rxvt.boldMode:          false
 !urxvt.inheritPixmap:     false
 !urxvt.shading:           15
 rxvt.xftAntialias:      false
