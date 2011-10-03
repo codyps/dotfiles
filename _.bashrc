@@ -22,6 +22,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+function font_change_deja () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=12.98
+
+	font_change "xft:DejaVu Sans Mono-$font"
+}
+
 function font_change () {
 	printf '\33]50;%s\007' "$1"
 }
