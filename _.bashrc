@@ -29,6 +29,20 @@ function font_change_deja () {
 	font_change "xft:DejaVu Sans Mono-$font"
 }
 
+function font_change_pro () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=11
+
+	font_change "xft:profont:pixelsize=$font"
+}
+
+function font_change_anon () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=11
+
+	font_change "xft:Anonymous Pro-$font"
+}
+
 function font_change () {
 	printf '\33]50;%s\007' "$1"
 }

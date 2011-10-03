@@ -108,7 +108,6 @@ endif
 au BufNewFile,BufRead *.of  set filetype=forth
 au BufNewFile,BufRead *.fth set filetype=forth
 
-
 "setlocal spell spelllang=en_us
 let c_space_errors = 1
 
