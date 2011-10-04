@@ -263,7 +263,7 @@ for s = 1, screen.count() do
 end
 
 for i = 1, keynumber do
-    local this_key = "F_" .. i;
+    local this_key = "F" .. i;
 
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, this_key,
