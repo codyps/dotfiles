@@ -39,7 +39,7 @@ xterm*saveLines:         512
 !urxvt*boldFont:          xft:terminus:pixelsize=7
 !urxvt.font:              xft:Dina:pixelsize=10
 !urxvt*boldFont:          xft:Dina:pixelsize=10
-urxvt.font:              xft:profont:pixelsize=11
+!urxvt.font:              xft:profont:pixelsize=11
 !urxvt*boldFont:          xft:profont:pixelsize=11
 !URxvt*font:              -proggytiny-*-*-*-*-10-*-*-*-*-*-*-*
 !urxvt*boldFont:          -proggytiny-*-*-*-*-10-*-*-*-*-*-*-*
@@ -111,30 +111,30 @@ rxvt.borderless:        true
 
 ! mikado colors
 !black
-*color0:    #322a2c
-*color8:    #46423b
+*Rxvt.color0:    #322a2c
+*Rxvt.color8:    #46423b
 !red
-*color1:    #a04363
-*color9:    #ae837a
+*Rxvt.color1:    #a04363
+*Rxvt.color9:    #ae837a
 !green
-*color2:    #9b9329
-*color10:   #b4aa30
+*Rxvt.color2:    #9b9329
+*Rxvt.color10:   #b4aa30
 !yellow
 !*color3:    #c77920
-*color3:    #bf7a29
-*color11:   #c7a551
+*Rxvt.color3:    #bf7a29
+*Rxvt.color11:   #c7a551
 !blue
-*color4:    #6a8c8c
-*color12:   #74999e
+*Rxvt.color4:    #6a8c8c
+*Rxvt.color12:   #74999e
 !magenta
-*color5:    #856774
-*color13:   #9c818e
+*Rxvt.color5:    #856774
+*Rxvt.color13:   #9c818e
 !cyan
-*color6:    #757978
-*color14:   #9fa590
+*Rxvt.color6:    #757978
+*Rxvt.color14:   #9fa590
 !white
-*color7:    #bcbcaf
-*color15:   #c1c4bc
+*Rxvt.color7:    #bcbcaf
+*Rxvt.color15:   #c1c4bc
 
 xclock*hourColor:     rgb:0/0/0
 xclock*minuteColor:   rgb:8/8/8

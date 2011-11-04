@@ -7,8 +7,8 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 shopt -s histappend globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=2000000
+HISTSIZE=1000000
+HISTFILESIZE=20000000
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
