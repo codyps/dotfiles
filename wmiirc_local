@@ -1,0 +1,37 @@
+# Local wmii modifications.
+
+export MODKEY=Mod4
+export WMII_TERM="xterm"
+
+status() {
+	echo -n $(acpi | awk '{print substr($4,0,3) }') '|' $(uptime | sed 's/.*://; s/,//g') '|' $(date)
+}
+
+local_events() {
+	cat <<'!'
+Key $MODKEY-Left
+	v=$(wmiir read /ctl | awk '/view/{print $2}')
+	((v=$v-1))
+	if test $v -lt 1; then
+		v=12
+	fi
+	wmiir xwrite /ctl view "$v"
+Key $MODKEY-Right
+	v=$(wmiir read /ctl | awk '/view/{print $2}')
+	((v=$v+1))
+	if test $v -gt 12; then
+		v=1
+	fi
+	wmiir xwrite /ctl view "$v"
+!
+#	for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+#		cat <<!
+#Key $MODKEY-F$i		 # Move to the numbered view
+#	wmiir xwrite /ctl view "$i"
+#Key $MODKEY-Shift-F$i     # Retag selected client with the numbered tag
+#	wmiir xwrite /client/sel/tags "$i"
+#!
+#	done
+}
+
+
