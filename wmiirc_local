@@ -3,52 +3,56 @@
 export MODKEY=Mod4
 export WMII_TERM="xterm"
 
+get_tags() {
+	wmiir ls /tag | sed 's/.$//; s/sel//g' | tr \n ' '
+}
+
 status() {
-	echo -n $(acpi | awk '{print substr($4,0,3) }') '|' $(uptime | sed 's/.*://; s/,//g') '|' $(date)
+	echo -n $(acpi | awk '{print substr($4,0,length($4)-1) }') '|' $(uptime | sed 's/.*://; s/,//g') '|' $(date)
 }
 
 local_events() {
 	cat <<'!'
+Key $MODKEY-Up
+	echo "----" >>/dev/stderr
+
 Key $MODKEY-Left
-	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=$v-1))
-	if test $v -lt 1; then
-		v=12
-	fi
-	wmiir xwrite /ctl view "$v"
+	cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
+	cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
+	tag_ct=$(wi_tags | awk 'END{print NR}')
+	((new_tag_ix=cur_tag_ix-1,new_tag_ix<1?(new_tag_ix=tag_ct):(0)))
+	new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
+	echo "left '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
+	wmiir xwrite /ctl view "$new_tag"
+
 Key $MODKEY-Right
-	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=$v+1))
-	if test $v -gt 12; then
-		v=1
-	fi
-	wmiir xwrite /ctl view "$v"
+	cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
+	cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
+	tag_ct=$(wi_tags | awk 'END{print NR}')
+	((new_tag_ix=(cur_tag_ix%tag_ct)+1))
+	new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
+	echo "right '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
+	wmiir xwrite /ctl view "$new_tag"
 
 Key $MODKEY-Shift-Left
 	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=$v-1))
-	if test $v -lt 1; then
-		v=12
-	fi
+	((v=(v-1)%12,v<1?(v=12):(v=v)))
 	wmiir xwrite /client/sel/tags "$v"
 	wmiir xwrite /ctl view "$v"
 Key $MODKEY-Shift-Right
 	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=$v+1))
-	if test $v -gt 12; then
-		v=1
-	fi
+	((v=v%12+1))
 	wmiir xwrite /client/sel/tags "$v"
 	wmiir xwrite /ctl view "$v"
 !
-#	for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
-#		cat <<!
-#Key $MODKEY-F$i		 # Move to the numbered view
-#	wmiir xwrite /ctl view "$i"
-#Key $MODKEY-Shift-F$i     # Retag selected client with the numbered tag
-#	wmiir xwrite /client/sel/tags "$i"
-#!
-#	done
+	for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+		cat <<!
+Key $MODKEY-F$i		 # Move to the numbered view
+	wmiir xwrite /ctl view "$i"
+Key $MODKEY-Shift-F$i     # Retag selected client with the numbered tag
+	wmiir xwrite /client/sel/tags "$i"
+!
+	done
 }
 
 
