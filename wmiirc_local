@@ -11,28 +11,28 @@ status() {
 	echo -n $(acpi | awk '{print substr($4,0,length($4)-1) }') '|' $(uptime | sed 's/.*://; s/,//g') '|' $(date)
 }
 
+move_view () {
+	local cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
+	local cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
+	local tag_ct=$(wi_tags | awk 'END{print NR}')
+	local new_tag_ix=$(($1))
+	local new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
+	wmiir xwrite /ctl view "$new_tag"
+	echo "move:: '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
+}
+
 local_events() {
 	cat <<'!'
 Key $MODKEY-Up
 	echo "----" >>/dev/stderr
 
 Key $MODKEY-Left
-	cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
-	cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
-	tag_ct=$(wi_tags | awk 'END{print NR}')
-	((new_tag_ix=cur_tag_ix-1,new_tag_ix<1?(new_tag_ix=tag_ct):(0)))
-	new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
-	echo "left '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
-	wmiir xwrite /ctl view "$new_tag"
+	echo "Left" >>/dev/stderr
+	move_view 'cur_tag_ix-1<1?tag_ct:(cur_tag_ix-1)'
 
 Key $MODKEY-Right
-	cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
-	cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
-	tag_ct=$(wi_tags | awk 'END{print NR}')
-	((new_tag_ix=(cur_tag_ix%tag_ct)+1))
-	new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
-	echo "right '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
-	wmiir xwrite /ctl view "$new_tag"
+	echo "Right" >>/dev/stderr
+	move_view 'cur_tag_ix%tag_ct)+1'
 
 Key $MODKEY-Shift-Left
 	v=$(wmiir read /ctl | awk '/view/{print $2}')
