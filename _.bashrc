@@ -4,11 +4,14 @@
 
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
-shopt -s histappend globstar checkwinsize
+shopt -s histappend histreedit histverify
+shipt -s globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000000
-HISTFILESIZE=20000000
+unset HISTFILESIZE
+
+PROMPT_COMMAND="history -a"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
