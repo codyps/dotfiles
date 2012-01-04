@@ -5,7 +5,7 @@
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
 shopt -s histappend histreedit histverify
-shipt -s globstar checkwinsize
+shopt -s globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000000
