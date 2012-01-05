@@ -15,10 +15,10 @@ move_view () {
 	local cur_tag=$(wmiir read /ctl | awk '/view/{print $2}')
 	local cur_tag_ix=$(wi_tags | awk '/'"$cur_tag"'/{print NR}')
 	local tag_ct=$(wi_tags | awk 'END{print NR}')
-	local new_tag_ix=$(($1))
+	local new_tag_ix=$((($1)))
 	local new_tag=$(wi_tags | awk '{ if (NR == '"${new_tag_ix}"') print $0}')
-	wmiir xwrite /ctl view "$new_tag"
 	echo "move:: '$cur_tag_ix' '$tag_ct' '$new_tag_ix' '$new_tag' " >>/dev/stderr
+	eval "$2"
 }
 
 local_events() {
@@ -28,22 +28,20 @@ Key $MODKEY-Up
 
 Key $MODKEY-Left
 	echo "Left" >>/dev/stderr
-	move_view 'cur_tag_ix-1<1?tag_ct:(cur_tag_ix-1)'
+	move_view 'cur_tag_ix-1<1?tag_ct:(cur_tag_ix-1)' 'wmiir xwrite /ctl view "$new_tag"'
 
 Key $MODKEY-Right
 	echo "Right" >>/dev/stderr
-	move_view 'cur_tag_ix%tag_ct)+1'
+	move_view 'cur_tag_ix%tag_ct+1' 'wmiir xwrite /ctl view "$new_tag"'
 
 Key $MODKEY-Shift-Left
-	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=(v-1)%12,v<1?(v=12):(v=v)))
-	wmiir xwrite /client/sel/tags "$v"
-	wmiir xwrite /ctl view "$v"
+	move_view 'cur_tag_ix-1<1?tag_ct:(cur_tag_ix-1)' \
+	'wmiir xwrite /client/sel/tags "$new_tag";
+	 wmiir xwrite /ctl view "$new_tag"'
 Key $MODKEY-Shift-Right
-	v=$(wmiir read /ctl | awk '/view/{print $2}')
-	((v=v%12+1))
-	wmiir xwrite /client/sel/tags "$v"
-	wmiir xwrite /ctl view "$v"
+	move_view 'cur_tag_ix%tag_ct+1' \
+	'wmiir xwrite /client/sel/tags "$new_tag";
+	 wmiir xwrite /ctl view "$new_tag"'
 !
 	for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
 		cat <<!
