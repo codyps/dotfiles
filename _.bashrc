@@ -11,7 +11,7 @@ shopt -s globstar checkwinsize
 HISTSIZE=1000000
 unset HISTFILESIZE
 
-PROMPT_COMMAND="history -a"
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
