@@ -1,0 +1,11 @@
+
+set_title () {
+	case $TERM in
+		xterm*|rxvt*|Eterm|aterm|kterm|gnome*|interix)
+			echo -ne "\033]0;$1\007"
+			;;
+		screen)
+			echo -ne "\033_$1\033\\"
+			;;
+	esac
+}
