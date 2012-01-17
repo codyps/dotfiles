@@ -1,0 +1,11 @@
+
+export HISTFILE=~/.zhistory
+export HISTSIZE=10000000
+#unset  SAVEHIST
+export SAVEHIST=100000000
+
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
+alias hi='fc -RI'
