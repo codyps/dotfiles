@@ -1,3 +1,6 @@
+[ui]
+username = Cody Schafer <jmesmon@gmail.com>
+
 [web]
 cacerts=/etc/ssl/certs/ca-certificates.crt
 
