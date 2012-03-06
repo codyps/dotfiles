@@ -1,4 +1,8 @@
 
+
+if [ -z $PATH_IS_SET ]; then
+
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -13,6 +17,19 @@ unset HISTFILESIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
+USER_PATH="/usr/lib/ccache/bin"
+
+if [ -z "$PATH_IS_SET" ]; then
+	PATH_IS_SET=1
+	export SYSTEM_PATH="$PATH"
+	export PATH="$USER_PATH:$SYSTEM_PATH"
+fi
+
+function update_path () {
+	unset PATH_IS_SET
+	export PATH="$SYSTEM_PATH"
+	echo "source the file"
+}
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

@@ -2,6 +2,7 @@
 require("awful")
 require("awful.autofocus")
 require("awful.rules")
+require("awful.remote")
 -- Theme handling library
 require("beautiful")
 -- Notification library
@@ -14,8 +15,8 @@ require("naughty")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
-terminal2 = "xterm"
+terminal2 = "urxvtc"
+terminal = "uxterm"
 screensaver_lock = "gnome-screensaver-command -l"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -206,7 +207,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control", "Shift" }, "Return", function () awful.util.spawn(terminal2) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey, "Shift"   }, "e", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -369,3 +370,6 @@ r.run("gnome-screensaver")
 r.run("bluetooth-applet")
 r.run("/usr/libexec/gnome-settings-daemon")
 r.run("setxkbmap -option compose:ralt")
+r.run("pidgin")
+r.run("transmission-gtk")
+r.run("dropbox")
