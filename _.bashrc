@@ -1,7 +1,5 @@
 
 
-if [ -z $PATH_IS_SET ]; then
-
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -17,11 +15,14 @@ unset HISTFILESIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-USER_PATH="/usr/lib/ccache/bin"
+USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin"
+
+if [ -z "$SYSTEM_PATH" ]; then
+	export SYSTEM_PATH="$PATH"
+fi
 
 if [ -z "$PATH_IS_SET" ]; then
 	PATH_IS_SET=1
-	export SYSTEM_PATH="$PATH"
 	export PATH="$USER_PATH:$SYSTEM_PATH"
 fi
 
