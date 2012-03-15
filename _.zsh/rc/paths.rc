@@ -1,0 +1,9 @@
+
+export USER_PATH="${HOME}/.gem/ruby/1.8/bin:/usr/lib/ccache/bin"
+
+if [ -z "$PATHS_ARE_SET" ]; then
+	PATHS_ARE_SET=1
+	export SYSTEM_PATH="$PATH"
+	export PATH="${USER_PATH}:${SYSTEM_PATH}"
+fi
+

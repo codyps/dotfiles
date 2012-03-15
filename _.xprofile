@@ -1,0 +1,4 @@
+#! /bin/sh
+
+xsetroot -solid '#222e45' # 34,46,69
+xrdb -merge ~/.Xresources
