@@ -1,8 +1,11 @@
-
+# Trick the highlighting?
 
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+my_UID=`id -u`
+my_GID=`id -g`
 
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
