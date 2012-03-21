@@ -1,6 +1,11 @@
+# Trick the highlighting?
+
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+my_UID=`id -u`
+my_GID=`id -g`
 
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
@@ -13,6 +18,22 @@ unset HISTFILESIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
+USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin"
+
+if [ -z "$SYSTEM_PATH" ]; then
+	export SYSTEM_PATH="$PATH"
+fi
+
+if [ -z "$PATH_IS_SET" ]; then
+	PATH_IS_SET=1
+	export PATH="$USER_PATH:$SYSTEM_PATH"
+fi
+
+function update_path () {
+	unset PATH_IS_SET
+	export PATH="$SYSTEM_PATH"
+	echo "source the file"
+}
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

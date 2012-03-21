@@ -106,8 +106,8 @@ rxvt.colorUL:           #999999
 rxvt.underlineColor:    #999999
 rxvt.borderless:        true
 
-*background:        #211708
-*foreground:        #978f83
+*Rxvt.background:        #211708
+*Rxvt.foreground:        #978f83
 
 ! mikado colors
 !black
