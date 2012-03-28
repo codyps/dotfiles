@@ -18,3 +18,5 @@ color=
 record=
 transplant=
 #git=
+
+%include ~/priv/hgrc
