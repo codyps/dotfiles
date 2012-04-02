@@ -159,3 +159,10 @@ if has("cscope")
 	endif
 endif
 
+if has("clang_complete")
+	set completeopt = menu,menuone,longest
+	set pumheight = 15
+	"let g:clang_complete_auto = 0
+	let g:clang_complete_copen = 1
+endif
+
