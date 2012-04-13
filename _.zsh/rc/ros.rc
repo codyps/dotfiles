@@ -1,0 +1,3 @@
+
+# Funtoo is not detected as gentoo.
+export ROS_OS_OVERRIDE=gentoo:0
