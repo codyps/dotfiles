@@ -18,6 +18,7 @@ unset HISTFILESIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
+PYTHONPATH="$HOME/.local/lib/python2.7/site-packages"
 USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin"
 
 if [ -z "$SYSTEM_PATH" ]; then
