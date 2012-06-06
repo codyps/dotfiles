@@ -21,6 +21,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec uxterm
 
+# Lock screen
+bindsym $mod+p      exec i3lock -c 000000 -d
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
