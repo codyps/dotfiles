@@ -77,6 +77,7 @@ import XMonad.Layout.Gaps
 import XMonad.Util.WindowProperties
 import Control.Monad
 import Data.Ratio
+import XMonad.Actions.CycleWS
 import qualified Data.Map as M
 
 -- defaults on which we build
@@ -111,7 +112,8 @@ imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
     sametimeRoster  = (ClassName "Sametime") `And` ( Title "IBM Lotus Sametime Connect - cpschafe@us.ibm.com " )
 
-myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
+-- myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
+myLayoutHook = fullscreen $ im $ normal where
     normal     = tallLayout ||| wideLayout ||| singleLayout ||| simpleTabbed
 		 ||| Grid
     fullscreen = onWorkspace "fullscreen" fullscreenLayout
@@ -136,7 +138,8 @@ imManageHooks = composeAll [isIM --> moveToIM] where
 -- Mod4 is the Super / Windows key
 myModMask = mod4Mask
 altMask = mod1Mask
- 
+
+modm = myModMask
 -- better keybindings for dvorak
 myKeys conf = M.fromList $
     [ ((myModMask .|. shiftMask  , xK_Return), spawn $ XMonad.terminal conf)
@@ -183,6 +186,21 @@ myKeys conf = M.fromList $
     [((m .|. myModMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_e, xK_w] [0..]
         , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]]
+
+    ++
+
+    [
+      ((modm,               xK_Down),  nextWS)
+    , ((modm,               xK_Up),    prevWS)
+    , ((modm .|. shiftMask, xK_Down),  shiftToNext >> nextWS)
+    , ((modm .|. shiftMask, xK_Up),    shiftToPrev >> prevWS)
+    , ((modm,               xK_Right), nextScreen)
+    , ((modm,               xK_Left),  prevScreen)
+    , ((modm .|. shiftMask, xK_Right), shiftNextScreen >> nextScreen)
+    , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen >> prevScreen)
+    , ((modm,               xK_z),     toggleWS)
+    , ((modm,               xK_x),     swapNextScreen
+    ]
 
     where workspaceKeys = [xK_F1 .. xK_F10]
  
