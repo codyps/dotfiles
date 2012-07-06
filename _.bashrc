@@ -18,7 +18,7 @@ unset HISTFILESIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-PYTHONPATH="$HOME/.local/lib/python2.7/site-packages"
+PYTHONPATH="$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH"
 USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin"
 
 if [ -z "$SYSTEM_PATH" ]; then
@@ -31,9 +31,7 @@ if [ -z "$PATH_IS_SET" ]; then
 fi
 
 function update_path () {
-	unset PATH_IS_SET
-	export PATH="$SYSTEM_PATH"
-	echo "source the file"
+	export PATH="$USER_PATH:$SYSTEM_PATH"
 }
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
