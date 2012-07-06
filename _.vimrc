@@ -14,6 +14,7 @@ if v:progname =~? "evim"
   finish
 endif
 
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -104,6 +105,9 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 au BufNewFile,BufRead *.of  set filetype=forth
 au BufNewFile,BufRead *.fth set filetype=forth
