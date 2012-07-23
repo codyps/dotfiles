@@ -4,6 +4,10 @@ username = Cody Schafer <jmesmon@gmail.com>
 [web]
 cacerts=/etc/ssl/certs/ca-certificates.crt
 
+[pager]
+pager = less -FRSX
+ignore = version, help, update
+
 [extensions]
 churn=
 progress=
@@ -17,6 +21,9 @@ hgk=
 color=
 record=
 transplant=
+mq=
+rebase=
+histedit=~/m/histedit/hg_histedit.py
 #git=
 
 %include ~/priv/hgrc

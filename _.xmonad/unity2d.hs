@@ -78,6 +78,8 @@ import XMonad.Util.WindowProperties
 import Control.Monad
 import Data.Ratio
 import XMonad.Actions.CycleWS
+import XMonad.Actions.SwapWorkspaces
+import XMonad.Hooks.ManageHelpers
 import qualified Data.Map as M
 
 -- defaults on which we build
@@ -92,48 +94,53 @@ myFocusedBorderColor = "#A0A0D0"
 
 -- workspaces
 myWorkspaces = ["web", "editor", "terms"] ++ (miscs 5) ++ ["fullscreen", "im"]
-    where miscs = map (("misc" ++) . show) . (flip take) [1..]
+	where miscs = map (("misc" ++) . show) . (flip take) [1..]
 isFullscreen = (== "fullscreen")
 
 -- layouts
 basicLayout = Tall nmaster delta ratio where
-    nmaster = 1
-    delta   = 3/100
-    ratio   = 1/2
+	nmaster = 1
+	delta   = 3/100
+	ratio   = 1/2
 tallLayout = named "tall" $ avoidStruts $ basicLayout
 wideLayout = named "wide" $ avoidStruts $ Mirror basicLayout
 singleLayout = named "single" $ avoidStruts $ noBorders Full
 fullscreenLayout = named "fullscreen" $ noBorders Full
 imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
-    chatLayout      = Grid
-    ratio           = 1%6
-    rosters         = [skypeRoster, pidginRoster, sametimeRoster]
-    pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
-    skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
-    sametimeRoster  = (ClassName "Sametime") `And` ( Title "IBM Lotus Sametime Connect - cpschafe@us.ibm.com " )
+	chatLayout      = Grid
+	ratio           = 1%6
+	rosters         = [skypeRoster, pidginRoster, sametimeRoster]
+	pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
+	skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+	sametimeRoster  = (ClassName "Sametime") `And` ( Title "IBM Lotus Sametime Connect - cpschafe@us.ibm.com " )
 
 -- myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
 myLayoutHook = fullscreen $ im $ normal where
-    normal     = tallLayout ||| wideLayout ||| singleLayout ||| simpleTabbed
-		 ||| Grid
-    fullscreen = onWorkspace "fullscreen" fullscreenLayout
-    im         = onWorkspace "im" imLayout
+	normal     = smartBorders (tallLayout ||| wideLayout
+		 ||| singleLayout ||| simpleTabbed ||| Grid)
+	fullscreen = onWorkspace "fullscreen" fullscreenLayout
+	im         = onWorkspace "im" imLayout
 
 
 unityManageHooks = composeAll [
 	  className =? "Unity-2d-panel"    --> doIgnore
 	, className =? "Unity-2d-launcher" --> doIgnore
+	, className =? "Gnome-panel"       --> doFloat -- Run Dialog.
+	 -- doesn't resize properly.
+	, className =? "Bluetooth-wizard"  --> doFloat
 	]
 
 -- special treatment for specific windows:
 -- put the Pidgin and Skype windows in the im workspace
-myManageHook = imManageHooks <+> manageHook myBaseConfig <+> unityManageHooks
+myManageHook = imManageHooks
+	<+> manageHook myBaseConfig
+	<+> unityManageHooks
 imManageHooks = composeAll [isIM --> moveToIM] where
-    isIM     = foldr1 (<||>) [isPidgin, isSkype]
-    isPidgin = className =? "Pidgin"
-    isSkype  = className =? "Skype"
-    isST     = className =? "Sametime"
-    moveToIM = doF $ S.shift "im"
+	isIM     = foldr1 (<||>) [isPidgin, isSkype]
+	isPidgin = className =? "Pidgin"
+	isSkype  = className =? "Skype"
+	isST     = className =? "Sametime"
+	moveToIM = doF $ S.shift "im"
 
 -- Mod4 is the Super / Windows key
 myModMask = mod4Mask
@@ -199,8 +206,12 @@ myKeys conf = M.fromList $
     , ((modm .|. shiftMask, xK_Right), shiftNextScreen >> nextScreen)
     , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen >> prevScreen)
     , ((modm,               xK_z),     toggleWS)
-    , ((modm,               xK_x),     swapNextScreen
+    , ((modm,               xK_x),     swapNextScreen)
     ]
+
+    ++
+    [((modm .|. controlMask, k), windows $ swapWithCurrent i)
+        | (i, k) <- zip myWorkspaces workspaceKeys]
 
     where workspaceKeys = [xK_F1 .. xK_F10]
  
@@ -215,16 +226,16 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
  
 -- put it all together
 main = xmonad $ myBaseConfig
-    { modMask = myModMask
-    , workspaces = myWorkspaces
-    , layoutHook = myLayoutHook
-    , manageHook = myManageHook
-    , borderWidth = myBorderWidth
-    , normalBorderColor = myNormalBorderColor
-    , focusedBorderColor = myFocusedBorderColor
-    , keys = myKeys
-    , mouseBindings = myMouseBindings
-    }
+	{ modMask = myModMask
+	, workspaces = myWorkspaces
+	, layoutHook = myLayoutHook
+	, manageHook = myManageHook
+	, borderWidth = myBorderWidth
+	, normalBorderColor = myNormalBorderColor
+	, focusedBorderColor = myFocusedBorderColor
+	, keys = myKeys
+	, mouseBindings = myMouseBindings
+	}
  
 -- modified version of XMonad.Layout.IM --
  
