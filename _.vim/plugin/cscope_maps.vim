@@ -25,29 +25,38 @@
 
 
 " This tests to see if vim was configured with the '--enable-cscope' option
-" when it was compiled.  If it wasn't, time to recompile vim... 
+" when it was compiled.  If it wasn't, time to recompile vim...
 if has("cscope")
-
-    """"""""""""" Standard cscope/vim boilerplate
 
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
 
+    if has('quickfix')
+	    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    cnoreabbrev csa cs add
+    cnoreabbrev csf cs find
+    cnoreabbrev csk cs kill
+    cnoreabbrev csr cs reset
+    cnoreabbrev css cs show
+    cnoreabbrev csh cs help
+
+    """"""""""""" Standard cscope/vim boilerplate
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
-        cs add cscope.out  
-    " else add the database pointed to by environment variable 
+        cs add cscope.out
+    " else add the database pointed to by environment variable
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
 
     " show msg when any other cscope db added
-    set cscopeverbose  
-
+    set cscopeverbose
 
     """"""""""""" My cscope/vim key mappings
     "

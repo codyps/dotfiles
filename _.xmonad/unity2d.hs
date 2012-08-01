@@ -125,9 +125,14 @@ myLayoutHook = fullscreen $ im $ normal where
 unityManageHooks = composeAll [
 	  className =? "Unity-2d-panel"    --> doIgnore
 	, className =? "Unity-2d-launcher" --> doIgnore
-	, className =? "Gnome-panel"       --> doFloat -- Run Dialog.
-	 -- doesn't resize properly.
+	-- Run Dialog.
+	, className =? "Gnome-panel"       --> doFloat
+	-- doesn't resize properly.
 	, className =? "Bluetooth-wizard"  --> doFloat
+	-- Is intendend to be a popup dialog, but lacks a controlling window.
+	, className =? "Apport-gtk"        --> doCenterFloat
+	-- Flash
+	, className =? "Plugin-container"  --> doFloat
 	]
 
 -- special treatment for specific windows:

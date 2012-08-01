@@ -1,8 +1,8 @@
-source ~/priv/mutt_account
+#source ~/priv/mutt_account
 
-set folder = "imaps://imap.gmail.com:993"
+set folder = "~/mail-ltc"
 set spoolfile = "+INBOX"
-set postponed="+[Gmail]/Drafts"
+set postponed = "Drafts"
 
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
@@ -12,9 +12,8 @@ set move = no
 
 set sort = 'threads'
 set sort_aux = 'reverse-last-date-received'
-set imap_check_subscribed
-
-set imap_keepalive = 900
+#set imap_check_subscribed
+#set imap_keepalive = 900
 
 #
 # ignore *
