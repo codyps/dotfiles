@@ -1,0 +1,9 @@
+[color]
+	ui = auto
+[alias]
+	post = !sh -c 'git format-patch --stdout $1 | ix' -
+	ci = commit
+	st = status
+	co = checkout
+
+# vim: ft=gitconfig
