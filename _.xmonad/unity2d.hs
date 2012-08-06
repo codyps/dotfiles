@@ -93,7 +93,7 @@ myNormalBorderColor = "#202030"
 myFocusedBorderColor = "#A0A0D0"
 
 -- workspaces
-myWorkspaces = ["web", "editor", "terms"] ++ (miscs 5) ++ ["fullscreen", "im"]
+myWorkspaces = ["web", "mail", "editor"] ++ (miscs 5) ++ ["fullscreen", "im"]
 	where miscs = map (("misc" ++) . show) . (flip take) [1..]
 isFullscreen = (== "fullscreen")
 
@@ -109,10 +109,9 @@ fullscreenLayout = named "fullscreen" $ noBorders Full
 imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
 	chatLayout      = Grid
 	ratio           = 1%6
-	rosters         = [skypeRoster, pidginRoster, sametimeRoster]
+	rosters         = [skypeRoster, pidginRoster]
 	pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
 	skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
-	sametimeRoster  = (ClassName "Sametime") `And` ( Title "IBM Lotus Sametime Connect - cpschafe@us.ibm.com " )
 
 -- myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
 myLayoutHook = fullscreen $ im $ normal where
@@ -135,17 +134,21 @@ unityManageHooks = composeAll [
 	, className =? "Plugin-container"  --> doFloat
 	]
 
--- special treatment for specific windows:
+webManageHooks = composeAll [isWeb --> moveToWeb] where
+	isWeb = className =? "Firefox"
+	moveToWeb = doF $ S.shift "web"
+
 -- put the Pidgin and Skype windows in the im workspace
-myManageHook = imManageHooks
-	<+> manageHook myBaseConfig
-	<+> unityManageHooks
 imManageHooks = composeAll [isIM --> moveToIM] where
 	isIM     = foldr1 (<||>) [isPidgin, isSkype]
 	isPidgin = className =? "Pidgin"
 	isSkype  = className =? "Skype"
-	isST     = className =? "Sametime"
 	moveToIM = doF $ S.shift "im"
+
+myManageHook = imManageHooks
+	<+> manageHook myBaseConfig
+	<+> unityManageHooks
+	<+> webManageHooks
 
 -- Mod4 is the Super / Windows key
 myModMask = mod4Mask
@@ -192,9 +195,9 @@ myKeys conf = M.fromList $
     [((m .|. myModMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys
         , (f, m) <- [(S.greedyView, 0), (S.shift, shiftMask)]]
-   
+
     ++
- 
+
     [((m .|. myModMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_e, xK_w] [0..]
         , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]]
@@ -216,10 +219,10 @@ myKeys conf = M.fromList $
 
     ++
     [((modm .|. controlMask, k), windows $ swapWithCurrent i)
-        | (i, k) <- zip myWorkspaces workspaceKeys]
+        | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys]
 
     where workspaceKeys = [xK_F1 .. xK_F10]
- 
+
 -- mouse bindings that mimic Gnome's
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, button1), (\w -> focus w >> mouseMoveWindow w))
