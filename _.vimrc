@@ -170,3 +170,18 @@ if has("clang_complete")
 	let g:clang_complete_copen = 1
 endif
 
+let g:c_syntax_for_h = 1
+
+func! s:FTheader()
+  if match(getline(1, min([line("$"), 200])), '^@\(interface\|end\|class\)') > -1
+    setf objc
+  elseif match(getline(1, min([line("$"), 200])), '^@\(namespace\|using\|<[^.]*>\|class\)') > -1
+    setf cpp
+  elseif exists("g:c_syntax_for_h")
+    setf c
+  elseif exists("g:ch_syntax_for_h")
+    setf ch
+  else
+    setf cpp
+  endif
+endfunc

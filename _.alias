@@ -1,0 +1,4 @@
+#! /bin/sh
+alias p1='patch -p1 -g1 -F0 --dry-run'
+alias p1-apply='patch -p1 -g1 -F0'
+alias p1-rm='patch -p1 -R -g1 -F0'
