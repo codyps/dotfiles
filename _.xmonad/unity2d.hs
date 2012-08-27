@@ -120,7 +120,9 @@ myLayoutHook = fullscreen $ im $ normal where
 	fullscreen = onWorkspace "fullscreen" fullscreenLayout
 	im         = onWorkspace "im" imLayout
 
-
+-- Note: often xprop will display 2 class names. So far, I have found that
+-- using the 2nd one/one with capitals has worked, while the first one/all
+-- lowercase does not.
 unityManageHooks = composeAll [
 	  className =? "Unity-2d-panel"    --> doIgnore
 	, className =? "Unity-2d-launcher" --> doIgnore
@@ -132,6 +134,8 @@ unityManageHooks = composeAll [
 	, className =? "Apport-gtk"        --> doCenterFloat
 	-- Flash
 	, className =? "Plugin-container"  --> doFloat
+	-- Pops up when a drive is inserted
+	, className =? "Gnome-fallback-mount-helper" --> doCenterFloat
 	]
 
 webManageHooks = composeAll [isWeb --> moveToWeb] where
