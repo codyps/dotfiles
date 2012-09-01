@@ -1,6 +1,5 @@
-[user]
-	name = Cody Schafer
-	email = cpschafer@gmail.com
 
-[color]
-	ui = auto
+[include]
+	path = dotfiles/_.gitconfig.id
+	path = dotfiles/_.gitconfig.general
+	path = dotfiles/_.gitconfig.msmtp
