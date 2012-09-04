@@ -14,7 +14,7 @@ method = sendmail
 [extensions]
 hgext.patchbomb=
 hgext.mq=
-mbox=
+mbox=~/m/hgmbox/mbox.py
 churn=
 progress=
 rebase=
