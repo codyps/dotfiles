@@ -1,3 +1,7 @@
+## Include via
+## [include]
+##	path = dotfiles/_.gitconfig.general
+
 [color]
 	ui = auto
 [alias]
@@ -8,5 +12,6 @@
 	b = branch -v
 	dc = describe --contains
 	fp = format-patch -k -M -N
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
 # vim: ft=gitconfig
