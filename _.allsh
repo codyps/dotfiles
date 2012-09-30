@@ -1,0 +1,2 @@
+alias date-time-file='date +%Y.%M.%d-%H.%m.%S'
+alias date-file='date +%Y.%M.%d'
