@@ -1,0 +1,19 @@
+#! /bin/sh
+
+do_hg () {
+	if ! [ -e "$1" ]; then
+		hg clone "$2"
+	else
+		( cd "$1" && hg pull --rebase )
+	fi
+}
+
+if ! [ -e ~/m ]; then
+	mkdir ~/m
+fi
+
+cd ~/m/
+
+do_hg hgmbox   https://bitbucket.org/pmezard/hgmbox
+do_hg histedit https://bitbucket.org/durin42/histedit
+

@@ -19,20 +19,14 @@ unset HISTFILESIZE
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 PYTHONPATH="$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH"
-USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin"
+USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin"
 
 if [ -z "$SYSTEM_PATH" ]; then
 	export SYSTEM_PATH="$PATH"
 fi
 
-if [ -z "$PATH_IS_SET" ]; then
-	PATH_IS_SET=1
-	export PATH="$USER_PATH:$SYSTEM_PATH"
-fi
+export PATH="$USER_PATH:$SYSTEM_PATH"
 
-function update_path () {
-	export PATH="$USER_PATH:$SYSTEM_PATH"
-}
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -86,4 +80,4 @@ fi
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+#HISTCONTROL=ignoredups:ignorespace

@@ -8,7 +8,13 @@ cacerts=/etc/ssl/certs/ca-certificates.crt
 pager = less -FRSX
 ignore = version, help, update
 
+[email]
+method = sendmail
+
 [extensions]
+hgext.patchbomb=
+hgext.mq=
+mbox=~/m/hgmbox/mbox.py
 churn=
 progress=
 rebase=
@@ -21,7 +27,6 @@ hgk=
 color=
 record=
 transplant=
-mq=
 rebase=
 histedit=~/m/histedit/hg_histedit.py
 #git=
