@@ -1,16 +1,13 @@
 
 #                  ruby                     easy_install     ccache
-export USER_PATH="${HOME}/.gem/ruby/1.8/bin:$HOME/.local/bin:/usr/lib/ccache/bin"
+
+PATH_RUBY="$HOME/.gem/ruby/1.8/bin"
+export USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$HOME/.local/bin:$PATH_RUBY"
 
 PYTHONPATH="$HOME/.local"
 
-if [ -z "$__SYSTEM_PATH" ]; then
-	__SYSTEM_PATH=1
+if [ -z "$SYSTEM_PATH" ]; then
 	export SYSTEM_PATH="$PATH"
 fi
 
-if [ -z "$PATHS_ARE_SET" ]; then
-	PATHS_ARE_SET=1
-	export PATH="${USER_PATH}:${SYSTEM_PATH}"
-fi
-
+export PATH="${USER_PATH}:${SYSTEM_PATH}"

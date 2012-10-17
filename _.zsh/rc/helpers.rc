@@ -1,0 +1,8 @@
+# vi: ft=sh
+
+zcompile_all_rc () {
+	zcompile ~/.zshrc
+	for i in ~/.zsh/rc/*.rc; do
+		zcompile "$i"
+	done;
+}
