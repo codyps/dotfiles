@@ -1,0 +1,6 @@
+[include]
+	path = _.gitconfig.id
+	path = _.gitconfig.general
+	path = _.gitconfig.msmtp
+
+# vim: ft=gitconfig
