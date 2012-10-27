@@ -1,18 +1,18 @@
-# vi: ft=sh
+# vi: ft=bash
 
-XPATH=( $HOME/x-tools/*/bin )
-rp=( $HOME/x-tools/*/lib )
-
-oifs="$IFS"; IFS=":"
-
-XPATH="${XPATH[*]}"
-export LD_RUN_PATH="${rp[*]}"
-
-IFS="$oifs"
+if [ -e "$HOME/x-tools/" ]; then
+	XPATH=( $HOME/x-tools/*/bin )
+	rp=( $HOME/x-tools/*/lib )
+	oifs="$IFS"; IFS=":"
+	XPATH="${XPATH[*]}"
+	export LD_RUN_PATH="${rp[*]}"
+	IFS="$oifs"
+	unset rp oifs
+fi
 
 PATH_RUBY="$HOME/.gem/ruby/1.8/bin"
-export USER_PATH="$EXTRA_USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin::$XPATH:$HOME/.local/bin:$PATH_RUBY"
-unset XPATH PATH_RUBY ofs rp
+export USER_PATH="$USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$XPATH:$HOME/.local/bin:$PATH_RUBY"
+unset PATH_RUBY
 
 PYTHONPATH="$HOME/.local"
 

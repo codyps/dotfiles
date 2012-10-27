@@ -1,7 +1,7 @@
 # vi: ft=sh
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
 
 my_UID=`id -u`
 my_GID=`id -g`

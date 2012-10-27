@@ -1,5 +1,3 @@
 
 [include]
-	path = _.gitconfig.id
-	path = _.gitconfig.general
-	path = _.gitconfig.msmtp
+	path = dotfiles/_.gitconfig.all
