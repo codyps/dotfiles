@@ -31,7 +31,7 @@ bindkey '\eOF' end-of-line
 #bindkey '^R' history-incremental-search-backward
 
 #export TERMINAL="urxvt"
-export TERMINAL="xterm"
+#export TERMINAL="xterm"
 
 # Activation
 compinit

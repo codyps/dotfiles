@@ -13,5 +13,7 @@
 	dc = describe --contains
 	fp = format-patch -k -M -N
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	sm = submodule
+	submod = submodule
 
 # vim: ft=gitconfig
