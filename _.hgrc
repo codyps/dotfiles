@@ -29,6 +29,6 @@ record=
 transplant=
 rebase=
 histedit=~/m/histedit/hg_histedit.py
-#git=
+hggit=
 
 %include ~/priv/hgrc

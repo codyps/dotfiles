@@ -16,4 +16,4 @@ cd ~/m/
 
 do_hg hgmbox   https://bitbucket.org/pmezard/hgmbox
 do_hg histedit https://bitbucket.org/durin42/histedit
-
+do_hg hg-git   https://bitbucket.org/durin42/hg-git

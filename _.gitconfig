@@ -1,3 +1,5 @@
 
 [include]
 	path = dotfiles/_.gitconfig.all
+[push]
+	default = matching
