@@ -2,6 +2,7 @@
 -- Any questions, criticism or praise just drop me an email
 
 local M = {}
+local awful = require("awful")
 
 -- get the current Pid of awesome
 local function getCurrentPid()
