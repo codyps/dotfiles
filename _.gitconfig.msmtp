@@ -1,8 +1,0 @@
-[sendemail]
-	confirm = auto
-	smtpserver = /usr/bin/msmtp
-	chainreplyto = false
-	aliasfiletype = mutt
-	aliasesfile = ~/.muttaliases
-
-# vim: ft=gitconfig
