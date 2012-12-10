@@ -11,6 +11,9 @@ ignore = version, help, update
 [email]
 method = sendmail
 
+[diff]
+git=1
+
 [extensions]
 hgext.patchbomb=
 hgext.mq=
