@@ -1,0 +1,9 @@
+
+[push]
+	default = matching
+[include]
+	path = general
+	path = id
+	path = msmtp
+
+# vim: ft=gitconfig
