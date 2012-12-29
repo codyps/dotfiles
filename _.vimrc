@@ -22,6 +22,7 @@ set nocompatible
 set viminfo='50,\"5000,:1000,%,n~/.viminfo
 
 set autoread
+set autowrite
 
 try
 	set undodir=~/.vim_runtime/undodir
