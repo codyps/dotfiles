@@ -81,6 +81,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.SwapWorkspaces
 import XMonad.Hooks.ManageHelpers
 import qualified Data.Map as M
+import XMonad.Hooks.SetWMName
 
 -- defaults on which we build
 -- use e.g. defaultConfig or gnomeConfig
@@ -247,6 +248,7 @@ main = xmonad $ myBaseConfig
 	, focusedBorderColor = myFocusedBorderColor
 	, keys = myKeys
 	, mouseBindings = myMouseBindings
+	, startupHook = setWMName "LG3D" -- workaround JAVA being a POS.
 	}
  
 -- modified version of XMonad.Layout.IM --
