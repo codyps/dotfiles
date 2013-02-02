@@ -5,7 +5,7 @@
 
 defaults.ctl.!card 1
 defaults.pcm.!card 1
-
+defaults.pcm.rate_converter "samplerate_medium"
 
 #pcm.!default {
 #	# XXX: is this as good as plughw?
