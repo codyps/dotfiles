@@ -1,5 +1,3 @@
 #! /bin/sh
-LOCK=i3lock -d
-xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
-dropbox &
+. ~/dotfiles/_.xprofile
 exec i3

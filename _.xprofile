@@ -1,8 +1,9 @@
 #! /bin/sh
+LOCK=i3lock -d -c 000000
 
 #/usr/libexec/notify-osd &
 xcompmgr &
 xsetroot -solid '#222e45' & # 34,46,69
-xrdb -merge ~/.Xresources &
-dropbox start >/dev/null  &
-xautolock -lock 'i3 -d' -locknow 'i3 -d' &
+xrdb -merge ~/dotfiles/_.Xresources &
+dropbox &
+xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
