@@ -43,7 +43,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal2 = "urxvtc"
 terminal = "uxterm"
-screensaver_lock = "gnome-screensaver-command -l"
+screensaver_lock = "xautolock -locknow"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
