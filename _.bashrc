@@ -12,8 +12,9 @@ shopt -s histappend histreedit histverify
 shopt -s globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-unset HISTFILESIZE
+# 2^32 - 2
+HISTSIZE=4294967294
+HISTFILESIZE=$HISTSIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 

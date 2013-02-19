@@ -5,4 +5,3 @@ ajp=/usr/share/autojump/autojump.sh
 if [ -e "$ajp" ]; then
 	. "$ajp"
 fi
-
