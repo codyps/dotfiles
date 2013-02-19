@@ -1,5 +1,5 @@
 #! /bin/sh
-LOCK=i3lock -d -c 000000
+LOCK="i3lock -d -c 000000"
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xresources &
 dropbox start >/dev/null  &
