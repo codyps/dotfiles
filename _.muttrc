@@ -1,30 +1,27 @@
 #source ~/priv/mutt_account
-set from = "cody@linux.vnet.ibm.com"
 set realname = "Cody P Schafer"
 
-set folder = "~/mail-ltc"
-set spoolfile = "+INBOX"
-mailboxes $folder/$spoolfile
-set postponed = "+Drafts"
-set record = "+Sent"
+source ~/priv/mutt_paperback
 
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
-set certificate_file=~/.mutt/certificates
+set mbox_type = Maildir
+set folder = "~/Mail"
 
-set move = no
+set header_cache    =~/.cache/mutt/headers
+set message_cachedir=~/.cache/mutt/bodies
+set certificate_file=~/.cache/mutt/certificates
+
+#set move = no
+unset move
 
 set sort = 'threads'
 set sort_aux = 'reverse-last-date-received'
 #set imap_check_subscribed
 #set imap_keepalive = 900
 
-
 # ignore *
  unignore from: date subject to cc
  unignore x-mailing-list: posted-to:
  unignore x-mailer:
-
 
 # For better looks
 # set markers=no # don't put '+' at the beginning of wrapped lines
@@ -44,7 +41,7 @@ set print_command="muttprint"
 set reply_regexp="^(re([\[0-9\]+])*|betr):[ \t]*"
 #set reply_to=yes
 set tilde=yes
-auto_view text/html
+#auto_view text/html
 
 source ~/.mutt/colors
 
@@ -53,5 +50,3 @@ ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 hdr_order Date From To Cc
 
-lists @lists.linux.ibm.com
-subscribe ltc-interlock@lists.linux.ibm.com
