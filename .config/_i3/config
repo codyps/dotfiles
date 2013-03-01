@@ -22,7 +22,7 @@ floating_modifier $mod
 bindsym $mod+Return exec uxterm
 
 # Lock screen
-bindsym $mod+p      exec i3lock -c 000000 -d
+bindsym $mod+p exec xautolock -locknow
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -126,23 +126,23 @@ bindsym k resize shrink down 10 px or 10 ppt
 bindsym Shift+K resize grow   down 10 px or 10 ppt
 
 bindsym l resize shrink up 10 px or 10 ppt
-bindsym Shift+L resize grow   up 10 px or 10 ppt
+bindsym Shift+L resize grow up 10 px or 10 ppt
 
 bindsym semicolon resize shrink right 10 px or 10 ppt
-bindsym Shift+colon resize grow   right 10 px or 10 ppt
+bindsym Shift+colon resize grow right 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
 bindsym Left resize shrink left 10 px or 10 ppt
-bindsym Shift+Left resize grow   left 10 px or 10 ppt
+bindsym Shift+Left resize grow left 10 px or 10 ppt
 
 bindsym Down resize shrink down 10 px or 10 ppt
-bindsym Shift+Down resize grow   down 10 px or 10 ppt
+bindsym Shift+Down resize grow down 10 px or 10 ppt
 
 bindsym Up resize shrink up 10 px or 10 ppt
-bindsym Shift+Up resize grow   up 10 px or 10 ppt
+bindsym Shift+Up resize grow up 10 px or 10 ppt
 
 bindsym Right resize shrink right 10 px or 10 ppt
-bindsym Shift+Right resize grow   right 10 px or 10 ppt
+bindsym Shift+Right resize grow right 10 px or 10 ppt
 
         # back to normal: Enter or Escape
 bindsym Return mode "default"

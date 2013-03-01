@@ -1,0 +1,4 @@
+#! /bin/sh
+
+. ~/dotfiles/_.xprofile
+exec i3

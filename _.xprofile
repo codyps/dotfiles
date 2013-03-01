@@ -1,6 +1,6 @@
 #! /bin/sh
-
-/usr/libexec/notify-osd &
-xcompmgr &
-xsetroot -solid '#222e45' # 34,46,69
-xrdb -merge ~/.Xresources
+LOCK="i3lock -d -c 000000"
+xsetroot -solid '#222e45' & # 34,46,69
+xrdb -merge ~/dotfiles/_.Xresources &
+dropbox start >/dev/null  &
+xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &

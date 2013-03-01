@@ -22,6 +22,13 @@ set nocompatible
 set viminfo='50,\"5000,:1000,%,n~/.viminfo
 
 set autoread
+set autowrite
+set autowriteall
+
+" Write the file to disk (if needed) every 30 seconds.
+" setting updatetime also changes how often a swapfile is written
+set updatetime=30
+au CursorHold * update
 
 try
 	set undodir=~/.vim_runtime/undodir

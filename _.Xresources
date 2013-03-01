@@ -1,5 +1,5 @@
 
-#include ".Xres/xft.ad"
+#include "_.Xres/xft.ad"
 
 Rxvt*scrollBar: false
 Rxvt*termName: rxvt-256color
