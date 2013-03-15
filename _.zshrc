@@ -36,6 +36,8 @@ bindkey '\eOF' end-of-line
 # Activation
 compinit
 
+. $HOME/dotfiles/_.shell
+
 # Resource files
 for file in $HOME/.zsh/rc/*.rc; do
 	source $file
