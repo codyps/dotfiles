@@ -27,7 +27,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-sleuth'
 Bundle 'docunext/closetag.vim'
-Bundle 'kevinw/pyflakes.vim'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 filetype plugin indent on
 
@@ -189,7 +191,10 @@ if has("clang_complete")
 	let g:clang_complete_copen = 1
 endif
 
+let g:NERDTreeIgnore=['\.[oda]$', '\~$']
 let g:c_syntax_for_h = 1
+
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 func! s:FTheader()
   if match(getline(1, min([line("$"), 200])), '^@\(interface\|end\|class\)') > -1
