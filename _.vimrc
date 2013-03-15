@@ -26,6 +26,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-sleuth'
+Bundle 'docunext/closetag.vim'
+Bundle 'kevinw/pyflakes.vim'
 
 filetype plugin indent on
 
