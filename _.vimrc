@@ -194,6 +194,7 @@ endif
 let g:NERDTreeIgnore=['\.[oda]$', '\~$']
 let g:c_syntax_for_h = 1
 
+set wildmode=longest:list
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 func! s:FTheader()

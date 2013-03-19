@@ -25,8 +25,10 @@ bindkey "\e[4~" end-of-line             # End (console)
 bindkey "\e[F" end-of-line              # End (xorg)
 bindkey "\e[2~" overwrite-mode          # Ins
 bindkey "\e[3~" delete-char             # Delete
-bindkey '\eOH' beginning-of-line
-bindkey '\eOF' end-of-line
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+bindkey "\e[7~" beginning-of-line	# urxvt
+bindkey "\e[8~" end-of-line		# urxvt
 
 #bindkey '^R' history-incremental-search-backward
 
