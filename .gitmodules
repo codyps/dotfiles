@@ -1,9 +1,0 @@
-[submodule "_.vim/bundle/vim-pathogen"]
-	path = _.vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule "_.vim/bundle/vimtodo"]
-	path = _.vim/bundle/vimtodo
-	url = https://github.com/mivok/vimtodo.git
-[submodule "_.vim/bundle/nerdtree"]
-	path = _.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
