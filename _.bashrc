@@ -12,8 +12,8 @@ shopt -s histappend histreedit histverify
 shopt -s globstar checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# 2^32 - 2
-HISTSIZE=4294967294
+# History is a signed 32 bit value in bash. This is the max.
+HISTSIZE=$(printf "%d" 0x7fffffff)
 HISTFILESIZE=$HISTSIZE
 
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
