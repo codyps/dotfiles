@@ -6,4 +6,7 @@
 	path = id
 	path = msmtp
 
+[user]
+	email = cody@linux.vnet.ibm.com
+
 # vim: ft=gitconfig
