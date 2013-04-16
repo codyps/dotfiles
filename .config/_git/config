@@ -5,5 +5,6 @@
 	path = general
 	path = id
 	path = msmtp
+	path = ~/priv/gitconfig
 
 # vim: ft=gitconfig
