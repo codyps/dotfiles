@@ -18,6 +18,20 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-sleuth'
+Bundle 'docunext/closetag.vim'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'jistr/vim-nerdtree-tabs'
+
+filetype plugin indent on
 
 set viminfo='50,\"5000,:1000,%,n~/.viminfo
 
@@ -114,8 +128,8 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect()
 
 au BufNewFile,BufRead *.of  set filetype=forth
 au BufNewFile,BufRead *.fth set filetype=forth
@@ -178,7 +192,11 @@ if has("clang_complete")
 	let g:clang_complete_copen = 1
 endif
 
+let g:NERDTreeIgnore=['\.[oda]$', '\~$']
 let g:c_syntax_for_h = 1
+
+set wildmode=longest:list
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 func! s:FTheader()
   if match(getline(1, min([line("$"), 200])), '^@\(interface\|end\|class\)') > -1
