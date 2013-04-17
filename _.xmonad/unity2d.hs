@@ -1,14 +1,13 @@
 {-# LANGUAGE FlexibleInstances, MultiParamTypeClasses, TypeSynonymInstances, FlexibleContexts, NoMonomorphismRestriction #-}
- 
--- XMonad configuration file by Thomas ten Cate <ttencate@gmail.com>
--- 
+
+-- XMonad config for Gnome on Ubuntu 12.10 by Cody P Schafer <xmonad@codyps.com>
+-- Based on "XMonad configuration file by Thomas ten Cate <ttencate@gmail.com>"
+--
 -- Works on xmonad-0.8, NOT on 0.7 or below; and of course
 -- xmonad-contrib needs to be installed as well
 --
--- This is designed to play nice with a standard Ubuntu Hardy installation.
--- It gives you 10 workspaces, available through Alt+F1..F10. You can move
--- windows to a workspace with Win+F1..F10 (and you will automatically switch
--- to that workspace too).
+-- I use this on Ubuntu 12.10 configured as a window manager for gnome (or is
+-- it unity2d? or gnome-fallback?).
 --
 -- All workspaces except F9 respect panels and docks.
 -- F9 is the fullscreen workspace (for mplayer, etc.).
@@ -20,47 +19,53 @@
 -- in the remaining space.
 -- (This uses a copied and modified version of XMonad.Layout.IM.)
 --
--- Keybindings mostly use the Windows key, but some use Alt to mimic other
--- window managers. In general: Alt is used for navigation, Win for modification.
--- Some of the bindings resemble the XMonad defaults, but most don't.
--- The bindings are set up to be comfortable to use on a dvorak keyboard layout.
---
 -- Navigation:
--- Alt+F1..F10          switch to workspace
--- Ctrl+Alt+Left/Right  switch to previous/next workspace
--- Alt+Tab              focus next window
--- Alt+Shift+Tab        focus previous window
+-- Win+F1..F10          switch to workspace
+-- Win+Up/Down          switch to previous/next workspace
+-- Win+Tab              focus next window
+-- Win+Shift+Tab        focus previous window
+--
+-- Screen Managment:
+-- Win+x		swap workspaces between screens
+-- Win+[Left,Right]	move focus to prev/next screen
 --
 -- Window management:
--- Win+F1..F10          move window to workspace
--- Win+Up/Down          move window up/down
--- Win+C                close window
--- Alt+ScrollUp/Down    move focused window up/down
+-- Win+z		      switch to previous WS.
+-- Win+[F1..F10]	      move focus to workspace
+-- Win+Shift+F1..F10          move window to workspace
+-- Win+Ctrl+[F1..F10]	      swap current workspace with another workspace
+-- Win+Shift+Up/Down	      move focused window to prev/next WS and follow it.
+-- Win+Shift+C                close window
+-- Win+ScrollUp/Down    move focused window up/down
 -- Win+M                move window to master area
 -- Win+N                refresh the current window
--- Alt+LMB              move floating window
--- Alt+MMB              resize floating window
--- Alt+RMB              unfloat floating window
+-- Win+LMB              move floating window
+-- Win+RMB              resize floating window
+-- Win+MMB              unfloat floating window
 -- Win+T                unfloat floating window
 --
 -- Layout management:
--- Win+Left/Right       shrink/expand master area
--- Win+W/V              move more/less windows into master area
+-- Win+Ctrl+Left/Right       shrink/expand master area
+-- Win+,/.             move more/less windows into master area
 -- Win+Space            cycle layouts
 --
 -- Other:
 -- Win+Enter            start a terminal
--- Win+R                open the Gnome run dialog
+-- Win+[R,D]            open the Gnome run dialog
 -- Win+Q                restart XMonad
--- Win+Shift+Q          display Gnome shutdown dialog
+-- Win+Shift+E          display Gnome shutdown dialog
 
 import XMonad
 import XMonad.Util.EZConfig
 import qualified XMonad.StackSet as S
 import XMonad.Actions.CycleWS
+import XMonad.Actions.CopyWindow
+import XMonad.Actions.SwapWorkspaces
 import XMonad.Config.Gnome
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.Combo
 import XMonad.Layout.Grid
 import XMonad.Layout.Tabbed
@@ -74,17 +79,17 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.TwoPane
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Gaps
+import XMonad.Layout.Maximize
+import XMonad.Layout.Fullscreen
 import XMonad.Util.WindowProperties
 import Control.Monad
 import Data.Ratio
-import XMonad.Actions.CycleWS
-import XMonad.Actions.SwapWorkspaces
-import XMonad.Hooks.ManageHelpers
 import qualified Data.Map as M
+import Data.Monoid          (Endo(..))
 
 -- defaults on which we build
 -- use e.g. defaultConfig or gnomeConfig
-myBaseConfig = gnomeConfig
+myBaseConfig = ewmh gnomeConfig
 
 -- display
 -- replace the bright red border with a more stylish colour
@@ -109,12 +114,13 @@ fullscreenLayout = named "fullscreen" $ noBorders Full
 imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
 	chatLayout      = Grid
 	ratio           = 1%6
-	rosters         = [skypeRoster, pidginRoster]
+	rosters         = [skypeRoster, pidginRoster, stRoster]
 	pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
 	skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+	stRoster        = ((Title "IBM Sametime - Chromium") `And` (Role "pop-up")) `Or` (Title "IBM Sametime - Mozilla Firefox")
 
 -- myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
-myLayoutHook = fullscreen $ im $ normal where
+myLayoutHook = fullscreenFloat $ fullscreenFocus $ maximize $ smartBorders ( fullscreen $ im $ normal ) where
 	normal     = smartBorders (tallLayout ||| wideLayout
 		 ||| singleLayout ||| simpleTabbed ||| Grid)
 	fullscreen = onWorkspace "fullscreen" fullscreenLayout
@@ -138,6 +144,19 @@ unityManageHooks = composeAll [
 	, className =? "Gnome-fallback-mount-helper" --> doCenterFloat
 	]
 
+-- doRemoveBorders :: Query (Endo WindowSet)
+-- doRemoveBorders = ask >>= \w -> liftX . withDisplay $ \d -> io $ setWindowBorder d w 0
+
+looManageHooks = composeAll [
+		--className =? "Soffice" <&&> stringProperty "WM_WINDOW_ROLE" =? "dialog" -->
+		--	doCenterFloat
+
+		-- http://code.google.com/p/xmonad/issues/detail?id=200
+		-- workaround presenter settings window flickering in tight loop.
+		--, className =? "Soffice" <&&> stringProperty "WM_WINDOW_ROLE" =? "dialog" -->
+		--	doRemoveBorders
+	]
+
 webManageHooks = composeAll [isWeb --> moveToWeb] where
 	isWeb = className =? "Firefox"
 	moveToWeb = doF $ S.shift "web"
@@ -153,6 +172,7 @@ myManageHook = imManageHooks
 	<+> manageHook myBaseConfig
 	<+> unityManageHooks
 	<+> webManageHooks
+	<+> looManageHooks
 
 -- Mod4 is the Super / Windows key
 myModMask = mod4Mask
@@ -170,17 +190,17 @@ myKeys conf = M.fromList $
     , ((myModMask                , xK_Tab   ), windows S.focusDown)
     , ((myModMask .|. shiftMask  , xK_Tab   ), windows S.focusUp)
     , ((myModMask                , xK_Down  ), windows S.swapDown)
-    , ((myModMask                , xK_m     ), windows S.focusMaster)
     , ((myModMask                , xK_Up    ), windows S.swapUp)
+    , ((myModMask                , xK_m     ), windows S.focusMaster)
+    , ((myModMask            , xK_backslash ), withFocused $ sendMessage . maximizeRestore)
+    , ((myModMask                , xK_b     ), sendMessage ToggleStruts)
     , ((myModMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((myModMask              , xK_period), sendMessage (IncMasterN (-1)))
     , ((myModMask .|. controlMask, xK_Left  ), sendMessage Shrink)
     , ((myModMask .|. controlMask, xK_Right ), sendMessage Expand)
     , ((myModMask                , xK_t     ), withFocused $ windows . S.sink)
     , ((myModMask                , xK_q     ), broadcastMessage ReleaseResources >> restart "xmonad" True)
-    , ((myModMask .|. shiftMask  , xK_q     ), spawn "gnome-session-save --kill")
-    , ((myModMask		 , xK_Left  ), prevWS)
-    , ((myModMask		 , xK_Right ), nextWS)
+    , ((myModMask .|. shiftMask  , xK_e     ), spawn "gnome-session-save --kill")
     ] ++
     -- Alt+F1..F10 switches to workspace
     -- (Alt is in a nicer location for the thumb than the Windows key,
@@ -193,17 +213,22 @@ myKeys conf = M.fromList $
     --    | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys
     --]
 
-    -- mod-[1..9], Switch to workspace N
-    -- mod-shift-[1..9], Move client to workspace N
-    --
+    -- mod-F[1..12], Switch to workspace N
+    -- mod-shift-F[1..12], Move client to workspace N
+    -- mod-ctrl-F[1..12], swap current workspace with workspace N.
     [((m .|. myModMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys
-        , (f, m) <- [(S.greedyView, 0), (S.shift, shiftMask)]]
-
+        , (f, m) <- [(S.greedyView, 0), (S.shift, shiftMask), (swapWithCurrent, controlMask)]]
     ++
 
+    -- -- Old mod-ctrl-F[1..12] code.
+    -- [((modm .|. controlMask, k), windows $ swapWithCurrent i)
+    --    | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys]
+    -- ++
+
+    -- mod-[e,w], do something funky with views/screens.
     [((m .|. myModMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w] [0..]
+        | (key, sc) <- zip [xK_w, xK_e] [0..]
         , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]]
 
     ++
@@ -221,11 +246,7 @@ myKeys conf = M.fromList $
     , ((modm,               xK_x),     swapNextScreen)
     ]
 
-    ++
-    [((modm .|. controlMask, k), windows $ swapWithCurrent i)
-        | (i, k) <- zip (XMonad.workspaces conf) workspaceKeys]
-
-    where workspaceKeys = [xK_F1 .. xK_F10]
+    where workspaceKeys = [xK_F1 .. xK_F12]
 
 -- mouse bindings that mimic Gnome's
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
@@ -235,7 +256,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, button4), (const $ windows S.swapUp))
     , ((modMask, button5), (const $ windows S.swapDown))
     ]
- 
+
 -- put it all together
 main = xmonad $ myBaseConfig
 	{ modMask = myModMask
@@ -247,6 +268,7 @@ main = xmonad $ myBaseConfig
 	, focusedBorderColor = myFocusedBorderColor
 	, keys = myKeys
 	, mouseBindings = myMouseBindings
+	, startupHook = setWMName "LG3D" -- workaround JAVA being a POS.
 	}
  
 -- modified version of XMonad.Layout.IM --

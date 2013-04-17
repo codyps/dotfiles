@@ -1,7 +1,0 @@
-
-[include]
-	path = dotfiles/_.gitconfig.id
-	path = dotfiles/_.gitconfig.general
-	path = dotfiles/_.gitconfig.msmtp
-[push]
-	default = matching

@@ -1,0 +1,41 @@
+
+# Perf folks.
+alias peterz Peter Zijlstra <a.p.zijlstra@chello.nl>
+alias paulmac Paul Mackerras <paulus@samba.org>
+alias acme Arnaldo Carvalho de Melo <acme@ghostprotocols.net>
+alias ingo Ingo Molnar <mingo@redhat.com>
+alias lkml LKML <linux-kernel@vger.kernel.org>
+
+# PPC folks
+alias linux-ppc Linux PPC <linuxppc-dev@lists.ozlabs.org>
+# paulm
+alias ben Benjamin Herrenschmidt <benh@kernel.crashing.org>
+
+# MM
+alias akpm Andrew Morton <akpm@linux-foundation.org>
+alias mel Mel Gorman <mgorman@suse.de>
+alias linux-mm Linux MM <linux-mm@kvack.org>
+
+alias kmoto KOSAKI Motohiro <kosaki.motohiro@gmail.com>
+alias simon Simon Jeons <simon.jeons@gmail.com>
+alias gilad Gilad Ben-Yossef <gilad@benyossef.com>
+
+alias namhyung Namhyung Kim <namhyung@kernel.org>
+
+alias suka  Sukadev Bhattiprolu <sukadev@linux.vnet.ibm.com>
+alias matt Matt Hellsley <matthltc@us.ibm.com>
+alias dave David Hansen <dave@linux.vnet.ibm.com>
+alias mikee Michael Ellerman <michaele@au1.ibm.com>
+
+alias ltc LTC Technical Interlock <ltc-interlock@lists.linux.ibm.com>
+
+alias me Cody P Schafer <cody@linux.vnet.ibm.com>
+alias me-gmail Cody P Schafer <cpschafer@gmail.com>
+alias me-notes Cody P Schafer <cpschafe@us.ibm.com>
+
+alias unw libunwind-devel <libunwind-devel@nongnu.org>
+
+alias niv Nivedita Singhvi  <niv@us.ibm.com>
+alias pat Pat Gaughen <gaughen@us.ibm.com>
+alias nathan Nathan D. Fontenot <nfont@linux.vnet.ibm.com>
+
