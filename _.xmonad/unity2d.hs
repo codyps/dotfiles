@@ -59,9 +59,13 @@ import XMonad
 import XMonad.Util.EZConfig
 import qualified XMonad.StackSet as S
 import XMonad.Actions.CycleWS
+import XMonad.Actions.CopyWindow
+import XMonad.Actions.SwapWorkspaces
 import XMonad.Config.Gnome
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.Combo
 import XMonad.Layout.Grid
 import XMonad.Layout.Tabbed
@@ -75,16 +79,13 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.TwoPane
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Gaps
+import XMonad.Layout.Maximize
+import XMonad.Layout.Fullscreen
 import XMonad.Util.WindowProperties
 import Control.Monad
 import Data.Ratio
-import XMonad.Actions.CycleWS
-import XMonad.Actions.SwapWorkspaces
-import XMonad.Hooks.ManageHelpers
 import qualified Data.Map as M
-import XMonad.Hooks.SetWMName
 import Data.Monoid          (Endo(..))
-import XMonad.Hooks.EwmhDesktops
 
 -- defaults on which we build
 -- use e.g. defaultConfig or gnomeConfig
@@ -113,12 +114,13 @@ fullscreenLayout = named "fullscreen" $ noBorders Full
 imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
 	chatLayout      = Grid
 	ratio           = 1%6
-	rosters         = [skypeRoster, pidginRoster]
+	rosters         = [skypeRoster, pidginRoster, stRoster]
 	pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
 	skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+	stRoster        = ((Title "IBM Sametime - Chromium") `And` (Role "pop-up")) `Or` (Title "IBM Sametime - Mozilla Firefox")
 
 -- myLayoutHook = gaps [(U, 24)] $ fullscreen $ im $ normal where
-myLayoutHook = smartBorders ( fullscreen $ im $ normal ) where
+myLayoutHook = fullscreenFloat $ fullscreenFocus $ maximize $ smartBorders ( fullscreen $ im $ normal ) where
 	normal     = smartBorders (tallLayout ||| wideLayout
 		 ||| singleLayout ||| simpleTabbed ||| Grid)
 	fullscreen = onWorkspace "fullscreen" fullscreenLayout
@@ -190,6 +192,8 @@ myKeys conf = M.fromList $
     , ((myModMask                , xK_Down  ), windows S.swapDown)
     , ((myModMask                , xK_Up    ), windows S.swapUp)
     , ((myModMask                , xK_m     ), windows S.focusMaster)
+    , ((myModMask            , xK_backslash ), withFocused $ sendMessage . maximizeRestore)
+    , ((myModMask                , xK_b     ), sendMessage ToggleStruts)
     , ((myModMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((myModMask              , xK_period), sendMessage (IncMasterN (-1)))
     , ((myModMask .|. controlMask, xK_Left  ), sendMessage Shrink)

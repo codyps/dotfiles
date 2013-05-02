@@ -31,7 +31,8 @@ color=
 record=
 transplant=
 rebase=
-histedit=~/m/histedit/hg_histedit.py
-hggit=
+histedit=
+hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
+#hggit=
 
 %include ~/priv/hgrc
