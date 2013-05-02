@@ -1,4 +1,4 @@
-# vi: ft=bash
+# vi: ft=sh
 
 if [ -e "$HOME/x-tools/" ]; then
 	XPATH=( $HOME/x-tools/*/bin )
