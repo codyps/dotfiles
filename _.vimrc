@@ -42,7 +42,8 @@ set autowriteall
 " Write the file to disk (if needed) every 30 seconds.
 " setting updatetime also changes how often a swapfile is written
 set updatetime=30
-au CursorHold * update
+au CursorHold * silent! update
+au FocusLost  * silent! update
 
 try
 	set undodir=~/.vim_runtime/undodir

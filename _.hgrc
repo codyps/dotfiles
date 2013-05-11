@@ -33,5 +33,6 @@ transplant=
 rebase=
 histedit=
 hggit=
+hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
 
 %include ~/priv/hgrc

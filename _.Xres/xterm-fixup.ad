@@ -1,10 +1,2 @@
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 UXTerm*metaSendsEscape: true
 XTerm*metaSendsEscape: true
-
-XTerm*vt100.translations: #override \
-        Shift <KeyPress> Up:      scroll-back(1, line) \n\
-        Shift <KeyPress> Down:    scroll-forw(1, line) \n\
-        Shift <KeyPress> Insert:  string(0x1b) string(0x5b) string(2;2~) \n\
-        Ctrl Shift <KeyPress> C:  select-end(PRIMARY,CLIPBOARD,CUT_BUFFER0) \n\
-        Ctrl Shift <KeyPress> V:  insert-selection(CLIPBOARD, CUT_BUFFER0, PRIMARY)
