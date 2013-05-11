@@ -10,6 +10,8 @@ fpath=($HOME/.zsh/functions $fpath)
 # colors
 eval `dircolors $HOME/.zsh/colors`
 
+setopt AUTO_PUSHD
+
 autoload -U zutil
 autoload -U compinit
 autoload -U complist
