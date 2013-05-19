@@ -3,6 +3,8 @@
 # Bruno Bonfils, <asyd@debian-fr.org> 
 # Written since summer 2001
 
+# We don't source this on each shell, screws up gcc-config
+. /etc/profile
 
 # My functions (don't forget to modify fpath before call compinit !!)
 fpath=($HOME/.zsh/functions $fpath)
