@@ -3,5 +3,5 @@ LOCK="i3lock -d -c 000000"
 xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
 
 xsetroot -solid '#222e45' & # 34,46,69
-xrdb -merge ~/dotfiles/_.Xresources &
+xrdb -merge ~/.Xdefaults &
 dropbox start >/dev/null  &

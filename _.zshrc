@@ -4,7 +4,8 @@
 # Written since summer 2001
 
 # We don't source this on each shell, screws up gcc-config
-. /etc/profile
+# XXX: this doesn't actually fix it.
+#. /etc/profile
 
 # My functions (don't forget to modify fpath before call compinit !!)
 fpath=($HOME/.zsh/functions $fpath)
