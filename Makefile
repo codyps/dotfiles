@@ -1,5 +1,6 @@
 
-
+subdirs_ = $(wildcard %*)
+subdirs  = $(subst %,,$(subdirs_))
 dotfiles_git = $(wildcard _.*)
 dotfiles     = $(subst _.,.,$(dotfiles_git))
 
@@ -15,6 +16,9 @@ QUIET_LN = @echo "LN $@";
 endif
 
 $(PREFIX)/% : _%
+	$(QUIET_LN)$(LN) -i -s $(srcdir_from_prefix)/$< $@
+
+$(PREFIX)/.config/% : %%.config/%
 	$(QUIET_LN)$(LN) -i -s $(srcdir_from_prefix)/$< $@
 
 all: $(addprefix $(PREFIX)/,$(dotfiles))

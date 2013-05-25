@@ -1,23 +1,28 @@
 general {
-	output_format = none
         colors = true
         interval = 5
 }
 
-order = "disk /"
-order += "wireless wlan0"
-order += "battery 1"
+order += "ipv6"
+order += "disk /"
+order += "wireless wlp2s0"
+order += "ethernet enp0s25"
+order += "battery 0"
 order += "load"
 order += "time"
 
-wireless wlan0 {
+wireless wlp2s0 {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
-battery 1 {
+ethernet enp0s25 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery 0 {
         format = "%status %percentage %remaining"
-#	path   = "/sys/class/power_supply/BAT1/uevent"
 }
 
 time {

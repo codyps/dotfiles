@@ -215,3 +215,5 @@ endfunc
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = [ '~/g/peerduct/*', '~/g/doirc/*' ]
 
+map <F1> <ESC>
+imap <F1> <ESC>
