@@ -5,23 +5,23 @@ general {
 
 order += "ipv6"
 order += "disk /"
-order += "wireless wlp2s0"
-order += "ethernet enp0s25"
-order += "battery 0"
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "battery 1"
 order += "load"
 order += "time"
 
-wireless wlp2s0 {
+wireless wlan0 {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
-ethernet enp0s25 {
+ethernet eth0 {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
 
-battery 0 {
+battery 1 {
         format = "%status %percentage %remaining"
 }
 
