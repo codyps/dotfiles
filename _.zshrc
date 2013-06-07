@@ -3,12 +3,17 @@
 # Bruno Bonfils, <asyd@debian-fr.org> 
 # Written since summer 2001
 
+# We don't source this on each shell, screws up gcc-config
+# XXX: this doesn't actually fix it.
+#. /etc/profile
 
 # My functions (don't forget to modify fpath before call compinit !!)
 fpath=($HOME/.zsh/functions $fpath)
 
 # colors
 eval `dircolors $HOME/.zsh/colors`
+
+setopt AUTO_PUSHD
 
 autoload -U zutil
 autoload -U compinit

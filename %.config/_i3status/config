@@ -1,11 +1,12 @@
 general {
-	output_format = none
         colors = true
         interval = 5
 }
 
-order = "disk /"
+order += "ipv6"
+order += "disk /"
 order += "wireless wlan0"
+order += "ethernet eth0"
 order += "battery 1"
 order += "load"
 order += "time"
@@ -15,9 +16,13 @@ wireless wlan0 {
         format_down = "W: down"
 }
 
+ethernet eth0 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
 battery 1 {
         format = "%status %percentage %remaining"
-#	path   = "/sys/class/power_supply/BAT1/uevent"
 }
 
 time {
