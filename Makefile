@@ -40,6 +40,8 @@ show-s :
 	@echo :s_symlink:
 	@$(MAKE) --no-print-directory show-s_symlink
 
+# FIXME: Doesn't strip subdir's %!
+# ex: "./%config/@somefile" -> "$(HOME)/%config/somefile"
 to-d = $(abspath $(HOME)/$(dir $(2))$(patsubst $(1)%,%,$(notdir $(2))))
 
 # XXX: to-s is untested!!!

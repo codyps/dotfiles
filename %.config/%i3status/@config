@@ -1,3 +1,12 @@
+#! /bin/sh
+
+maybe_e=`ifconfig | grep -o '^e.*:' | head -n1 | cut -d: -f 1`
+maybe_w=`ifconfig | grep -o '^w.*:' | head -n1 | cut -d: -f 1`
+
+eth0=$maybe_e
+wlan0=$maybe_w
+
+cat << EOF
 general {
         colors = true
         interval = 5
@@ -5,18 +14,18 @@ general {
 
 order += "ipv6"
 order += "disk /"
-order += "wireless wlan0"
-order += "ethernet eth0"
+order += "wireless $wlan0"
+order += "ethernet $eth0"
 order += "battery 1"
 order += "load"
 order += "time"
 
-wireless wlan0 {
+wireless $wlan0 {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
-ethernet eth0 {
+ethernet $eth0 {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
@@ -36,3 +45,4 @@ load {
 disk "/" {
 	format = "%free"
 }
+EOF
