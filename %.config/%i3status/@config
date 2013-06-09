@@ -1,7 +1,7 @@
 #! /bin/sh
 
-maybe_e=`ifconfig | grep -o '^e.*:' | head -n1 | cut -d: -f 1`
-maybe_w=`ifconfig | grep -o '^w.*:' | head -n1 | cut -d: -f 1`
+maybe_e=`ifconfig | grep -o '^e.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
+maybe_w=`ifconfig | grep -o '^w.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
 
 eth0=$maybe_e
 wlan0=$maybe_w
@@ -14,11 +14,19 @@ general {
 
 order += "ipv6"
 order += "disk /"
+order += "volume master"
 order += "wireless $wlan0"
 order += "ethernet $eth0"
 order += "battery 1"
 order += "load"
 order += "time"
+
+volume master {
+        format = "♪: %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
 
 wireless $wlan0 {
         format_up = "W: (%quality at %essid) %ip"
