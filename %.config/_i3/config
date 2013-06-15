@@ -23,6 +23,8 @@ bindsym $mod+Return exec uxterm
 
 # Lock screen
 bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
+bindsym $mod+Shift+p exec sh -c "xautolock -disable"
+bindsym $mod+Ctrl+Shift+p exec sh -c "xautolock -enable"
 
 # kill focused window
 bindsym $mod+Shift+Q kill
