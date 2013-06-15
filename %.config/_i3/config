@@ -22,7 +22,7 @@ floating_modifier $mod
 bindsym $mod+Return exec uxterm
 
 # Lock screen
-bindsym $mod+p exec xautolock -locknow
+bindsym $mod+p exec xautolock -enable -locknow
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -147,10 +147,17 @@ bindsym Shift+Right resize grow right 10 px or 10 ppt
         # back to normal: Enter or Escape
 bindsym Return mode "default"
 bindsym Escape mode "default"
+bindsym $mod+r mode "default"
 }
 
-bindsym $mod+Ctrl+Left  resize grow left 2px or 2ppt
+bindsym $mod+Shift+Ctrl+Left  resize shrink right 2px or 2ppt
+bindsym $mod+Shift+Ctrl+Right resize shrink left  2px or 2ppt
+bindsym $mod+Shift+Ctrl+Up    resize shrink down  2px or 2ppt
+bindsym $mod+Shift+Ctrl+Down  resize shrink up    2px or 2ppt
+bindsym $mod+Ctrl+Left  resize grow left  2px or 2ppt
 bindsym $mod+Ctrl+Right resize grow right 2px or 2ppt
+bindsym $mod+Ctrl+Up    resize grow up    2px or 2ppt
+bindsym $mod+Ctrl+Down  resize grow down  2px or 2ppt
 
 bindsym $mod+r mode "resize"
 

@@ -43,7 +43,7 @@ bindkey "\e[8~" end-of-line		# urxvt
 # Activation
 compinit
 
-. $HOME/dotfiles/_.shell
+. $HOME/dotfiles/shell
 
 # Resource files
 for file in $HOME/.zsh/rc/*.rc; do
