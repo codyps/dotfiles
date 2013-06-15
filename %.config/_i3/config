@@ -22,7 +22,7 @@ floating_modifier $mod
 bindsym $mod+Return exec uxterm
 
 # Lock screen
-bindsym $mod+p exec xautolock -enable -locknow
+bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
 
 # kill focused window
 bindsym $mod+Shift+Q kill
