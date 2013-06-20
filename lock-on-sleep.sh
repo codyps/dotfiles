@@ -19,7 +19,7 @@ lock_screen()
                   --type='method_call' --print-reply \
                   /ScreenSaver org.freedesktop.ScreenSaver.Lock"
     elif ps auxc | grep xautolock > /dev/null 2>&1; then
-        XLOCK="xautolock -locknow"
+        XLOCK="xautolock -enable; xautolock -locknow"
     elif [ -x /usr/bin/i3lock ]; then
         XLOCK="i3lock"
     else
@@ -35,7 +35,7 @@ lock_screen()
         fi
         if [ x"$user" != x"" ]; then
             export DISPLAY=":$displaynum"
-            /bin/su -c "$XLOCK" "$user"
+            su -c "$XLOCK" "$user"
             return 0
         fi
     done
