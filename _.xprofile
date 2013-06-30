@@ -5,3 +5,9 @@ xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -corne
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/.Xdefaults &
 dropbox start >/dev/null  &
+
+case $HOSTNAME in
+zero)
+    pasystray
+    ;;
+esac
