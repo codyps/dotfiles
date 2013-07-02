@@ -8,6 +8,6 @@
 	path = ~/priv/gitconfig
 
 [user]
-	email = cody@linux.vnet.ibm.com
+	email = devel@codyps.com
 
 # vim: ft=gitconfig

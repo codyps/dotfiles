@@ -32,7 +32,7 @@ record=
 transplant=
 rebase=
 histedit=
-hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
+#hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
 #hggit=
 
 %include ~/priv/hgrc
