@@ -1,17 +1,34 @@
 # vi: ft=sh
 
-if [ -e "$HOME/x-tools/" ]; then
-	XPATH=( $HOME/x-tools/*/bin )
-	rp=( $HOME/x-tools/*/lib )
-	oifs="$IFS"; IFS=":"
-	XPATH="${XPATH[*]}"
-	export LD_RUN_PATH="${rp[*]}"
-	IFS="$oifs"
-	unset rp oifs
-fi
+unsetopt NOMATCH
 
-PATH_RUBY="$HOME/.gem/ruby/1.8/bin"
-export USER_PATH="$USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$XPATH:$HOME/.local/bin:$PATH_RUBY"
+X_PATHS=
+for p in "$HOME/x-tools/"*"/bin"; do
+	if ! [ -d "$p" ]; then
+		continue
+	fi
+	X_PATHS=$X_PATHS:$p
+done
+
+X_LD_PATHS=
+for p in "$HOME/x-tools/"*"/lib"; do
+	if ! [ -d "$p" ]; then
+		continue
+	fi
+	X_LD_PATHS=$X_LD_PATHS:$p
+done
+
+export LD_RUN_PATH="${X_LD_PATHS##:}"
+
+RUBY_PATHS=
+for p in "$HOME/.gem/ruby/"*/bin; do
+	if ! [ -d "$p" ]; then
+		continue
+	fi
+	RUBY_PATHS=$RUBY_PATHS:$p
+done
+
+export USER_PATH="$USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$HOME/.local/bin$X_PATHS$RUBY_PATHS"
 unset PATH_RUBY
 
 PYTHONPATH="$HOME/.local"
@@ -21,3 +38,5 @@ if [ -z "$SYSTEM_PATH" ]; then
 fi
 
 export PATH="${USER_PATH}:${SYSTEM_PATH}"
+
+setopt NOMATCH
