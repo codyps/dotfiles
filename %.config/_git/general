@@ -2,6 +2,8 @@
 ## [include]
 ##	path = dotfiles/_.gitconfig.general
 
+[push]
+	default = matching
 [color]
 	ui = auto
 [alias]
