@@ -1,0 +1,18 @@
+#! /bin/sh
+
+# set `E=sudo` when needed
+# set D to the "source" directory (`D=$HOME/dotfiles`, for example)
+ln_q () {
+	# $1 = file relative to the conf/ dir
+	# $2 = final location to install link to (absolute)
+	d="$(dirname "$2")"
+	r="$(realpath --relative-to="$d" "$D/$1")"
+	$E mkdir -p "$d"
+	if [ -e "$2" ]; then
+		echo "Link exsists: "
+		ls -dl "$2"
+	fi
+	dbg "d=$d; r=$r"
+	$E ln -is "$r" "$2"
+}
+
