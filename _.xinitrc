@@ -1,3 +1,3 @@
 #! /bin/sh
-[ -f ~/.xprofile ] && . ~/.xprofile
-exec i3
+[ -f ~/dotfiles/_.xprofile ] && . ~/dotfiles/_.xprofile
+exec dbus-launch i3

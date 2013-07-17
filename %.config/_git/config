@@ -1,6 +1,6 @@
 [include]
 	path = general
-	path = id.ibm
+	path = id
 	path = msmtp
 	path = ~/priv/gitconfig
 
