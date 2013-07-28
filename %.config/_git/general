@@ -17,5 +17,7 @@
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	sm = submodule
 	submod = submodule
+[rerere]
+	enabled = true
 
 # vim: ft=gitconfig
