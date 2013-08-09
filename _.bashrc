@@ -19,35 +19,7 @@ HISTFILESIZE=$HISTSIZE
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 . ~/dotfiles/_.zsh/rc/paths.rc
-. ~/dotfiles/_.zsh/rc/alias.rc
-
-font_change_deja () {
-	local font
-	[[ $# -eq 1 ]] && font=$1 || font=12.98
-	font_change "xft:DejaVu Sans Mono-$font"
-}
-font_change_pro () {
-	local font
-	[[ $# -eq 1 ]] && font=$1 || font=11
-	font_change "xft:profont:pixelsize=$font"
-}
-font_change_anon () {
-	local font
-	[[ $# -eq 1 ]] && font=$1 || font=11
-	font_change "xft:Anonymous Pro-$font"
-}
-font_change () {
-	printf '\33]50;%s\007' "$1"
-}
-fc_xft_px_sz () {
-	font_change `printf "xft:%s:pixelsize=%s"`
-}
-
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-if [ -x /usr/bin/lesspipe ]; then
-	export LESSOPEN="|lesspipe %s"
-fi
+. ~/dotfiles/shell
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace

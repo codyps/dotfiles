@@ -1,0 +1,74 @@
+# vi: ft=sh
+
+alias date-time-file='date +%Y.%M.%d-%H.%m.%S'
+alias date-file='date +%Y.%M.%d'
+
+ajp=/usr/share/autojump/autojump.sh
+if [ -e "$ajp" ]; then
+	. "$ajp"
+fi
+
+
+font_change_deja () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=12.98
+	font_change "xft:DejaVu Sans Mono-$font"
+}
+font_change_pro () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=11
+	font_change "xft:profont:pixelsize=$font"
+}
+font_change_anon () {
+	local font
+	[[ $# -eq 1 ]] && font=$1 || font=11
+	font_change "xft:Anonymous Pro-$font"
+}
+font_change () {
+	printf '\33]50;%s\007' "$1"
+}
+fc_xft_px_sz () {
+	font_change `printf "xft:%s:pixelsize=%s"`
+}
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if [ -x /usr/bin/lesspipe ]; then
+	export LESSOPEN="|lesspipe %s"
+fi
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias ll="ls -lah"
+alias rm="rm -i"
+alias cp="cp -i"
+alias l="ls -ail"
+alias cl="clear"
+
+alias cvs="cvs -z3"
+
+## did this ever make sense? don't I already have reboot?
+#alias reboot="shutdown -r now"
+
+# do a du -hs on each dir on current path
+alias lsdir="for dir in *;do;if [ -d \$dir ];then;du -hsL \$dir;fi;done"
+
+if [ -x /usr/libexec/mc/mc-wrapper.sh ]; then
+	alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+fi
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+CCACHE_COMPILERCHECK="%compiler% -v"

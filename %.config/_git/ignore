@@ -1,0 +1,7 @@
+.*.swp
+.*.swo
+*~
+
+# Maybe these shouldn't be here
+*.[oda]
+*.pyc

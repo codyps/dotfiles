@@ -1,13 +1,7 @@
-
-[push]
-	default = matching
 [include]
 	path = general
 	path = id
 	path = msmtp
 	path = ~/priv/gitconfig
-
-[user]
-	email = cody@linux.vnet.ibm.com
 
 # vim: ft=gitconfig

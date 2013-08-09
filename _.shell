@@ -1,7 +1,0 @@
-alias date-time-file='date +%Y.%M.%d-%H.%m.%S'
-alias date-file='date +%Y.%M.%d'
-
-ajp=/usr/share/autojump/autojump.sh
-if [ -e "$ajp" ]; then
-	. "$ajp"
-fi
