@@ -1,17 +1,42 @@
 # vi: ft=sh
 
-if [ -e "$HOME/x-tools/" ]; then
-	XPATH=( $HOME/x-tools/*/bin )
-	rp=( $HOME/x-tools/*/lib )
-	oifs="$IFS"; IFS=":"
-	XPATH="${XPATH[*]}"
-	export LD_RUN_PATH="${rp[*]}"
-	IFS="$oifs"
-	unset rp oifs
-fi
+unsetopt NOMATCH
 
-PATH_RUBY="$HOME/.gem/ruby/1.8/bin"
-export USER_PATH="$USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$XPATH:$HOME/.local/bin:$PATH_RUBY"
+_path_gen () {
+	local l
+	for p in "$1/"*"/$2"; do
+		if ! [ -d "$p" ]; then
+			continue
+		fi
+		l=$l:$p
+	done
+	printf "%s" "$l"
+}
+
+bin_path_gen () {
+	_path_gen $1  bin
+}
+
+lib_path_gen () {
+	_path_gen $1 lib
+}
+
+#path_gen () {
+#	`bin_path_gen $1`
+#	`lib_path_gen $1`
+#}
+
+local X_TOOL_LD_PATHS X_TOOL_PATHS X_PATHS X_LD_PATHS
+X_TOOL_PATHS=`bin_path_gen $HOME/x-tools`
+X_TOOL_LD_PATHS=`lib_path_gen $HOME/x-tools`
+X_PATHS=`bin_path_gen $HOME/x`
+X_LD_PATHS=`lib_path_gen $HOME/x`
+
+export LD_RUN_PATH="${X_LD_PATHS##:}${X_TOOL_LD_PATHS}"
+
+RUBY_PATHS=`bin_path_gen "$HOME/.gem/ruby"`
+
+export USER_PATH="$USER_PATH:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$HOME/.local/bin$X_PATHS$X_TOOL_PATHS$RUBY_PATHS"
 unset PATH_RUBY
 
 PYTHONPATH="$HOME/.local"
@@ -21,3 +46,5 @@ if [ -z "$SYSTEM_PATH" ]; then
 fi
 
 export PATH="${USER_PATH}:${SYSTEM_PATH}"
+
+setopt NOMATCH
