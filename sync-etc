@@ -1,0 +1,4 @@
+#!/bin/sh
+# http://labix.org/editmoin#head-2765be9f314abc814808f8408a3ffa45933db52a
+wget http://pr.willowgarage.com/wiki/editmoin?action=AttachFile&do=view&target=moin.vim -O ~/.vim/syntax/moin.vim
+

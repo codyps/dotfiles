@@ -2,6 +2,16 @@
 LOCK="i3lock -d -c 000000"
 xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
 
+# Disable beeping (setterm can also configure)
+# Only reenable if a way to mix the beep into audio can be found.
+xset -b
+
 xsetroot -solid '#222e45' & # 34,46,69
-xrdb -merge ~/.Xdefaults &
+xrdb -merge ~/dotfiles/_.Xdefaults &
 dropbox start >/dev/null  &
+
+case $HOSTNAME in
+zero)
+    pasystray &
+    ;;
+esac

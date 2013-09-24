@@ -19,5 +19,7 @@
 	submod = submodule
 [am]
 	keepcr = no
+[rerere]
+	enabled = true
 
 # vim: ft=gitconfig
