@@ -17,11 +17,9 @@
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	sm = submodule
 	submod = submodule
-<<<<<<< HEAD
+
 [am]
 	keepcr = no
-=======
->>>>>>> 674f49854056c47727d7298c1921efe0edc45e31
 [rerere]
 	enabled = true
 
