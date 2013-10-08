@@ -1,0 +1,61 @@
+#! /bin/sh
+
+maybe_e=`ifconfig -a | grep -o '^e.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
+maybe_w=`ifconfig -a | grep -o '^w.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
+
+eth0=$maybe_e
+wlan0=$maybe_w
+
+battery_num=0
+if [ -e "/sys/class/power_supply/BAT1" ]; then
+        battery_num=1
+fi
+
+cat << EOF
+general {
+        colors = true
+        interval = 5
+}
+
+order += "ipv6"
+order += "disk /"
+order += "volume master"
+order += "wireless $wlan0"
+order += "ethernet $eth0"
+order += "battery $battery_num"
+order += "load"
+order += "time"
+
+volume master {
+        format = "♪: %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+wireless $wlan0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+
+ethernet $eth0 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery $battery_num {
+        format = "%status %percentage %remaining"
+}
+
+time {
+	format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+	format = "%1min"
+}
+
+disk "/" {
+	format = "%free"
+}
+EOF

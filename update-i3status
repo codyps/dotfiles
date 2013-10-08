@@ -1,0 +1,4 @@
+#! /bin/sh
+
+mkdir -p $HOME/.config/i3status
+$(dirname "$0")/%.config/%i3status/@config > $HOME/.config/i3status/config

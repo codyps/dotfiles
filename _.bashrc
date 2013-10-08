@@ -19,7 +19,7 @@ HISTFILESIZE=$HISTSIZE
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 . ~/dotfiles/_.zsh/rc/paths.rc
-. ~/dotfiles/_.shell
+. ~/dotfiles/shell
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace

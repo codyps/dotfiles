@@ -1,0 +1,12 @@
+#! /bin/bash
+
+
+for i in "~/x-tools/*"; do
+	d=$i/etc/bash_completion.d
+	if [ -d "$d" ]; then
+		for f in "$d/*"; do
+			. "$f"
+		done
+	fi
+done
+

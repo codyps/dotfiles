@@ -14,7 +14,11 @@ alias ben Benjamin Herrenschmidt <benh@kernel.crashing.org>
 # MM
 alias akpm Andrew Morton <akpm@linux-foundation.org>
 alias mel Mel Gorman <mgorman@suse.de>
-alias linux-mm Linux MM <linux-mm@kvack.org>
+alias mm Linux MM <linux-mm@kvack.org>
+alias david David Rientjes <rientjes@google.com>
+
+alias viro Alexander Viro <viro@zeniv.linux.org.uk>
+alias fsdevel linux-fsdevel@vger.kernel.org
 
 alias kmoto KOSAKI Motohiro <kosaki.motohiro@gmail.com>
 alias simon Simon Jeons <simon.jeons@gmail.com>
@@ -24,7 +28,7 @@ alias namhyung Namhyung Kim <namhyung@kernel.org>
 
 alias suka  Sukadev Bhattiprolu <sukadev@linux.vnet.ibm.com>
 alias matt Matt Hellsley <matthltc@us.ibm.com>
-alias dave David Hansen <dave@linux.vnet.ibm.com>
+alias dave David Hansen <dave.hansen@intel.com>
 alias mikee Michael Ellerman <michaele@au1.ibm.com>
 
 alias ltc LTC Technical Interlock <ltc-interlock@lists.linux.ibm.com>
@@ -39,3 +43,6 @@ alias niv Nivedita Singhvi  <niv@us.ibm.com>
 alias pat Pat Gaughen <gaughen@us.ibm.com>
 alias nathan Nathan D. Fontenot <nfont@linux.vnet.ibm.com>
 
+## Checkpatch
+alias apw Andy Whitcroft <apw@canonical.com>
+alias joe Joe Perches <joe@perches.com>

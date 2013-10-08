@@ -81,6 +81,7 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Gaps
 import XMonad.Layout.Maximize
 import XMonad.Layout.Fullscreen
+import qualified XMonad.Layout.GridVariants as G
 import XMonad.Util.WindowProperties
 import Control.Monad
 import Data.Ratio
@@ -112,8 +113,8 @@ wideLayout = named "wide" $ avoidStruts $ Mirror basicLayout
 singleLayout = named "single" $ avoidStruts $ noBorders Full
 fullscreenLayout = named "fullscreen" $ noBorders Full
 imLayout = avoidStruts $ reflectHoriz $ withIMs ratio rosters chatLayout where
-	chatLayout      = Grid
-	ratio           = 1%6
+	chatLayout      = G.TallGrid 2 2 (5/6) (16/9) (1/16)
+	ratio           = 1%10
 	rosters         = [skypeRoster, pidginRoster, stRoster]
 	pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
 	skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))

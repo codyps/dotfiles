@@ -2,11 +2,13 @@
 ## [include]
 ##	path = dotfiles/_.gitconfig.general
 
+[push]
+	default = matching
 [color]
 	ui = auto
 [alias]
 	post = !sh -c 'git format-patch --stdout $1 | ix' -
-	ci = commit
+	ci = commit -v
 	st = status
 	co = checkout
 	b = branch -v
@@ -15,5 +17,10 @@
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	sm = submodule
 	submod = submodule
+
+[am]
+	keepcr = no
+[rerere]
+	enabled = true
 
 # vim: ft=gitconfig
