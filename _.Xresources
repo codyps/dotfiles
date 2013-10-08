@@ -1,11 +1,14 @@
+! This config results in rendering of htop being significantly slower than
+! Xdefaults_small in Xterm.
 
 #include "_.Xres/xft.ad"
+#include "_.Xres/xterm-fixup.ad"
 
 Rxvt*scrollBar: false
 Rxvt*termName: rxvt-256color
 Rxvt*xftAntialias: true
-Rxvt*font: xft:Bitstream Vera Sans Mono-9.5
-URxvt*font: xft:Bitstream Vera Sans Mono-9.5
+Rxvt*font: xft:DejaVu Sans Mono-9.5
+URxvt*font: xft:DejaVu Sans Mono-9.5
 
 *Rxvt*meta8: false
 !Rxvt*foreground: LightGray
@@ -18,5 +21,5 @@ URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
 
-# include ".Xres/rstrcogburn.ad"
-# include ".Xres/xss_2.ad"
+# include "_.Xres/rstrcogburn.ad"
+# include "_.Xres/xss_2.ad"
