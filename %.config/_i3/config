@@ -163,8 +163,11 @@ bindsym $mod+Ctrl+Down  resize grow down  2px or 2ppt
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Toggle between "dock" and "hide". Use non-existent
+# modifier to make "hide" act like "invisible"
+bindsym $mod+b bar mode toggle
+
 bar {
-	status_command i3status
+        # Using Mod5 here because I don't have one.
+        modifier Mod5
 }
