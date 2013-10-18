@@ -2,28 +2,12 @@
 #include "_.Xres/xft.ad"
 #include "_.Xres/xterm-fixup.ad"
 
-urxvt.scrollBar: false
-!Rxvt*termName: rxvt-256color
-!Rxvt*xftAntialias: true
-!Rxvt*font: xft:Anonymous-Pro
-
-!*font:  -*-fixed-*-*-*-*-10-*-*-*-*-*-iso10646-1
-!*boldFont: -*-fixed-*
 xterm*font:     -*-fixed-*-*-*-*-10-*-*-*-*-*-iso10646-1
 xterm*boldFont: -*-fixed-*-*-*-*-10-*-*-*-*-*-iso10646-1
+!xterm*reverseWrap: true
 
+
+urxvt.scrollBar: false
 Rxvt*boldMode: true
 Rxvt*font:      -*-fixed-*-*-*-*-10-*-*-*-*-*-iso10646-1
 Rxvt*boldFont:  -*-fixed-*-*-*-*-10-*-*-*-*-*-iso10646-1
-!urxvt.font:      xft:proggytiny:pixelsize=10
-!urxvt.font:      xft:dina:pixelsize=5
-!urxvt.font:*-*-fixed-medium-r-normal--*-75-*-*-*-*-iso8859-1
-!urxvt*boldFont:      xft:proggytiny:pixelsize=10
-!urxvt*italicFont:      xft:proggytiny:pixelsize=10
-!Rxvt*foreground: LightGray
-!Rxvt*background: DimGray
-!Rxvt*foreground: LightGray
-!Rxvt*background: DimGray
-
-!# include ".Xres/rstrcogburn.ad"
-!# include ".Xres/xss_2.ad"
