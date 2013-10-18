@@ -9,6 +9,7 @@ xset -b
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xdefaults &
 dropbox start >/dev/null  &
+redshift -l 45:-122 &
 
 case $HOSTNAME in
 zero)
