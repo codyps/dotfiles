@@ -1,5 +1,7 @@
 [user]
 	name = Cody P Schafer
 	email = cody@linux.vnet.ibm.com
+[sendemail]
+	smtpserver = kernel.stglabs.ibm.com
 # vim: ft=gitconfig
 
