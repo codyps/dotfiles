@@ -46,3 +46,7 @@ alias nathan Nathan D. Fontenot <nfont@linux.vnet.ibm.com>
 ## Checkpatch
 alias apw Andy Whitcroft <apw@canonical.com>
 alias joe Joe Perches <joe@perches.com>
+
+alias jack Jan Kara <jack@suse.cz>
+alias ext4 EXT4 <linux-ext4@vger.kernel.org>
+alias adilger Andreas Dilger <adilger.kernel@dilger.ca>
