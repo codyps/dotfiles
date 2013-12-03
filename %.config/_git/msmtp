@@ -4,5 +4,6 @@
 	chainreplyto = false
 	aliasfiletype = mutt
 	aliasesfile = ~/.muttaliases
+	envelopesender = auto
 
 # vim: ft=gitconfig
