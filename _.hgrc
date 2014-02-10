@@ -32,6 +32,7 @@ record=
 transplant=
 rebase=
 histedit=
+shelve=
 #hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
 #hggit=
 

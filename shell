@@ -1,5 +1,9 @@
 # vi: ft=sh
 
+hr () {
+    printf '=%.0s' $(seq $COLUMNS)
+}
+
 alias date-time-file='date +%Y.%M.%d-%H.%m.%S'
 alias date-file='date +%Y.%M.%d'
 

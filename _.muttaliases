@@ -1,15 +1,20 @@
 
 # Perf folks.
-alias peterz Peter Zijlstra <a.p.zijlstra@chello.nl>
-alias paulmac Paul Mackerras <paulus@samba.org>
+alias peterz-perf Peter Zijlstra <a.p.zijlstra@chello.nl>
+# (SCHED???)
+alias peterz-sched Peter Zijlstra <peterz@infradead.org>
+alias paulus Paul Mackerras <paulus@samba.org>
 alias acme Arnaldo Carvalho de Melo <acme@ghostprotocols.net>
-alias ingo Ingo Molnar <mingo@redhat.com>
+alias mingo Ingo Molnar <mingo@redhat.com>
+
 alias lkml LKML <linux-kernel@vger.kernel.org>
 
 # PPC folks
 alias linux-ppc Linux PPC <linuxppc-dev@lists.ozlabs.org>
 # paulm
 alias ben Benjamin Herrenschmidt <benh@kernel.crashing.org>
+alias anton Anton Blanchard <anton@samba.org>
+alias agraf Alexander Graf <agraf@suse.de>
 
 # MM
 alias akpm Andrew Morton <akpm@linux-foundation.org>
