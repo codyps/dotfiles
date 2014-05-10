@@ -1,5 +1,5 @@
 [ui]
-username = Cody Schafer <jmesmon@gmail.com>
+username = Cody Schafer <dev@codyps.com>
 
 [web]
 cacerts=/etc/ssl/certs/ca-certificates.crt

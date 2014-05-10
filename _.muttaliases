@@ -1,3 +1,9 @@
+alias sparse linux-sparse@vger.kernel.org
+
+# Doc folks
+alias linux-doc linux-doc@vger.kernel.org
+
+alias gregkh Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 # Perf folks.
 alias peterz-perf Peter Zijlstra <a.p.zijlstra@chello.nl>
@@ -12,7 +18,7 @@ alias lkml LKML <linux-kernel@vger.kernel.org>
 # PPC folks
 alias linux-ppc Linux PPC <linuxppc-dev@lists.ozlabs.org>
 # paulm
-alias ben Benjamin Herrenschmidt <benh@kernel.crashing.org>
+alias benh Benjamin Herrenschmidt <benh@kernel.crashing.org>
 alias anton Anton Blanchard <anton@samba.org>
 alias agraf Alexander Graf <agraf@suse.de>
 
@@ -35,6 +41,7 @@ alias suka  Sukadev Bhattiprolu <sukadev@linux.vnet.ibm.com>
 alias matt Matt Hellsley <matthltc@us.ibm.com>
 alias dave David Hansen <dave.hansen@intel.com>
 alias mikee Michael Ellerman <michaele@au1.ibm.com>
+alias mpe Michael Ellerman <michael@ellerman.id.au>
 
 alias ltc LTC Technical Interlock <ltc-interlock@lists.linux.ibm.com>
 
