@@ -133,7 +133,7 @@ export LD_RUN_PATH="${rp[*]}"
 IFS="$oifs"
 unset oifs
 
-export PATH="$HOME/bin:$HOME/usr/bin:$HOME/me/bz:$HOME/trifles/bin:$HOME/g/bindir:$XPATH:$ORIG_PATH"
+export PATH="$HOME/bin:$HOME/priv/bin:$HOME/usr/bin:$HOME/me/bz:$HOME/trifles/bin:$HOME/g/bindir:$XPATH:$ORIG_PATH"
 export HISTTIMEFORMAT='%F %T'
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export DEFAULT_SERVICE=dpaste

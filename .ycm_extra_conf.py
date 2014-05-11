@@ -16,7 +16,9 @@ flags = [
 # Includes
 '-I', '.',
 '-I', 'ccan',
-'-I', 'penny'
+'-I', 'penny',
+'-I', 'include',
+'-I', 'arch/powerpc/include'
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
