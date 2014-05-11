@@ -9,7 +9,7 @@ pager = less -FRSX
 ignore = version, help, update
 
 [email]
-method = msmtp-ref
+method = msmtp
 
 [diff]
 git=1
