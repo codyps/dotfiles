@@ -4,8 +4,8 @@ hr () {
     printf '=%.0s' $(seq $COLUMNS)
 }
 
-alias date-time-file='date +%Y.%M.%d-%H.%m.%S'
-alias date-file='date +%Y.%M.%d'
+alias date-time-file='date +%Y.%m.%d-%H.%M.%S'
+alias date-file='date +%Y.%m.%d'
 
 ajp=/usr/share/autojump/autojump.sh
 if [ -e "$ajp" ]; then
