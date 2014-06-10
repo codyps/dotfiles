@@ -1,7 +1,11 @@
 #! /bin/sh
 
-maybe_e=`ifconfig -a | grep -o '^e.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
-maybe_w=`ifconfig -a | grep -o '^w.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
+net_devs=`ls /sys/class/net`
+maybe_e=`echo "$net_devs" | grep '^e' | head -n1`
+maybe_w=`echo "$net_devs" | grep '^w' | head -n1`
+
+#maybe_e=`ifconfig -a | grep -o '^e.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
+#maybe_w=`ifconfig -a | grep -o '^w.*:' | head -n1 | cut -d: -f 1 | cut -d' ' -f1`
 
 eth0=$maybe_e
 wlan0=$maybe_w
@@ -20,7 +24,9 @@ general {
 order += "ipv6"
 order += "disk /"
 order += "volume master"
-order += "wireless $wlan0"
+$(if [ -n "$wlan0"]; then
+	echo "order += \"wireless $wlan0\""
+  fi)
 order += "ethernet $eth0"
 order += "battery $battery_num"
 order += "load"
@@ -31,11 +37,6 @@ volume master {
         device = "default"
         mixer = "Master"
         mixer_idx = 0
-}
-
-wireless $wlan0 {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
 }
 
 ethernet $eth0 {
@@ -59,3 +60,12 @@ disk "/" {
 	format = "%free"
 }
 EOF
+
+if [ -n "$wlan0" ]; then
+cat << EOF
+wireless $wlan0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+EOF
+fi
