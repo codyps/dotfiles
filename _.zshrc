@@ -49,3 +49,9 @@ compinit
 for file in $HOME/.zsh/rc/*.rc; do
 	source $file
 done
+
+# Remove empty elements
+PATH=${PATH##:}
+PATH=${PATH%%:}
+PATH=${PATH/:://}
+export PATH
