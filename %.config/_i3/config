@@ -170,5 +170,7 @@ bindsym $mod+b bar mode toggle
 bar {
         # Using Mod5 here because I don't have one.
         modifier Mod5
+        hidden_state show
+        id bar-1
         status_command i3status
 }
