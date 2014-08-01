@@ -20,7 +20,19 @@ general {
 order += "ipv6"
 order += "disk /"
 order += "volume master"
+EOF
+
+if [ -n "$wlan0" ]; then
+cat << EOF
 order += "wireless $wlan0"
+wireless $wlan0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+EOF
+fi
+
+cat << EOF
 order += "ethernet $eth0"
 order += "battery $battery_num"
 order += "load"
@@ -31,11 +43,6 @@ volume master {
         device = "default"
         mixer = "Master"
         mixer_idx = 0
-}
-
-wireless $wlan0 {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
 }
 
 ethernet $eth0 {
