@@ -10,10 +10,14 @@ maybe_w=`echo "$net_devs" | grep '^w' | head -n1`
 eth0=$maybe_e
 wlan0=$maybe_w
 
-battery_num=0
-if [ -e "/sys/class/power_supply/BAT1" ]; then
-        battery_num=1
-fi
+battery_num=""
+for b in /sys/class/power_supply/BAT*; do
+	if [ -e "$b" ]; then
+		battery_num="$(basename "$b")"
+		battery_num="${battery_num##BAT}"
+		break
+	fi
+done
 
 cat << EOF
 general {
@@ -24,11 +28,33 @@ general {
 order += "ipv6"
 order += "disk /"
 order += "volume master"
-$(if [ -n "$wlan0"]; then
-	echo "order += \"wireless $wlan0\""
-  fi)
+EOF
+
+if [ -n "$wlan0" ]; then
+cat << EOF
+order += "wireless $wlan0"
+wireless $wlan0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+EOF
+fi
+
+cat << EOF
 order += "ethernet $eth0"
+EOF
+
+
+if [ -n "$battery_num" ]; then
+cat << EOF
 order += "battery $battery_num"
+battery $battery_num {
+        format = "%status %percentage %remaining"
+}
+EOF
+fi
+
+cat << EOF
 order += "load"
 order += "time"
 
@@ -42,10 +68,6 @@ volume master {
 ethernet $eth0 {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
-}
-
-battery $battery_num {
-        format = "%status %percentage %remaining"
 }
 
 time {
