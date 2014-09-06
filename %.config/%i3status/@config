@@ -19,6 +19,8 @@ for b in /sys/class/power_supply/BAT*; do
 	fi
 done
 
+: ${ENABLE_VOL:=false}
+
 cat << EOF
 general {
         colors = true
@@ -27,8 +29,19 @@ general {
 
 order += "ipv6"
 order += "disk /"
-order += "volume master"
 EOF
+
+if $ENABLE_VOL; then
+cat << EOF
+order += "volume master"
+volume master {
+        format = "♪: %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+EOF
+fi
 
 if [ -n "$wlan0" ]; then
 cat << EOF
@@ -57,13 +70,6 @@ fi
 cat << EOF
 order += "load"
 order += "time"
-
-volume master {
-        format = "♪: %volume"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
-}
 
 ethernet $eth0 {
         format_up = "E: %ip (%speed)"
