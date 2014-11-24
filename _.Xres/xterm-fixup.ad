@@ -1,2 +1,4 @@
 UXTerm*metaSendsEscape: true
 XTerm*metaSendsEscape: true
+UXterm*jumpScroll: true
+Xterm*jumpScroll: true
