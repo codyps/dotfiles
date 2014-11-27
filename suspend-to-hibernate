@@ -1,0 +1,50 @@
+#!/bin/bash
+# for pm-utils, install in
+# /etc/pm/sleep.d/
+# for systemd, install in
+# /usr/lib/systemd/system-sleep/
+
+# Purpose: Auto hibernates after a period of sleep
+
+# Seconds to wait before hibernating from sleep
+autohibernate=7200
+
+# Time is stored in this file
+L=/var/run/rtchibernate.lock
+
+if which systemctl >/dev/null 2>&1; then
+	hibernate_cmd="systemctl hibernate"
+else
+	hibernate_cmd="pm-hibernate"
+fi
+
+##
+
+curtime=$(date +%s)
+logger -i "suspend-to-hibernate: $curtime $1"
+
+case "$1" in
+suspend)
+	# Suspending.  Record current time, and set a wake up timer.
+	echo "$curtime" >"$L"
+	rtcwake -m no -s $autohibernate
+	;;
+resume)
+	# Coming out of sleep
+
+	oifs="$IFS"
+	IFS=""
+	read sustime <"$L"
+	IFS="$oifs"
+
+	rm "$L"
+	# Did we wake up due to the rtc timer above?
+	if [ $((curtime-sustime)) -ge $autohibernate ]; then
+		# Then hibernate
+		rm "$L"
+		$hibernate_cmd
+	else
+		# Otherwise cancel the rtc timer and wake up normally.
+		rtcwake -m disable
+	fi
+fi
