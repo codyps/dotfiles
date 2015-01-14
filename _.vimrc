@@ -23,7 +23,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-sleuth'
 Bundle 'docunext/closetag.vim'
