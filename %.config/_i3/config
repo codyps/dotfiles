@@ -9,17 +9,22 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+# Windows / Super
+set $mod Mod1
+
+# ?? 
+#set $modalt Mod1
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font -*-fixed-*-*-*-*-9-*-*-*-*-*-iso10646-1
+font -*-fixed-*-*-*-*-16-*-*-*-*-*-iso10646-1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec uxterm
+#bindsym $mod+Return exec uxterm
+bindsym $mod+Return exec urxvtc -fn "xft:DejaVuSans Mono-6" +sb -rv
 
 # Lock screen
 bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
@@ -58,9 +63,13 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
+# mac os X intercepts the above, use alt
+#bindsym $modalt+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
+# mac os X intercepts the above, use alt
+#bindsym $modalt+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -160,6 +169,13 @@ bindsym $mod+Ctrl+Left  resize grow left  2px or 2ppt
 bindsym $mod+Ctrl+Right resize grow right 2px or 2ppt
 bindsym $mod+Ctrl+Up    resize grow up    2px or 2ppt
 bindsym $mod+Ctrl+Down  resize grow down  2px or 2ppt
+
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
+bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 
 bindsym $mod+r mode "resize"
 

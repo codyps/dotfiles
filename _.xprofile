@@ -12,6 +12,10 @@ dropbox start >/dev/null  &
 redshift -l 45:-122 &
 type prlcc >/dev/null 2>&1 && prlcc &
 
+autocutsel -selection CLIPBOARD -fork
+autocutsel -selection PRIMARY -fork
+urxvtd &
+
 case $HOSTNAME in
 zero)
     pasystray &
