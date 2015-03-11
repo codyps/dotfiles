@@ -1,5 +1,5 @@
 [ui]
-username = Cody Schafer <jmesmon@gmail.com>
+username = Cody P Schafer <dev@codyps.com>
 
 [web]
 cacerts=/etc/ssl/certs/ca-certificates.crt
@@ -9,7 +9,7 @@ pager = less -FRSX
 ignore = version, help, update
 
 [email]
-method = sendmail
+method = msmtp
 
 [diff]
 git=1
@@ -32,6 +32,7 @@ record=
 transplant=
 rebase=
 histedit=
+shelve=
 #hgext.hgshelve=~/.hgext/hgshelve/hgshelve.py
 #hggit=
 

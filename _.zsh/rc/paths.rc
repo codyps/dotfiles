@@ -36,7 +36,7 @@ export LD_RUN_PATH="${X_LD_PATHS##:}${X_TOOL_LD_PATHS}"
 
 RUBY_PATHS=`bin_path_gen "$HOME/.gem/ruby"`
 
-export USER_PATH="${USER_PATH}${USER_PATH##:}:/usr/lib/ccache/bin:$HOME/trifles/bin:$HOME/bin:$HOME/.local/bin$X_PATHS$X_TOOL_PATHS$RUBY_PATHS"
+export USER_PATH="${USER_PATH}/usr/lib/ccache/bin:$HOME/depot_tools:$HOME/trifles/bin:$HOME/bin:$HOME/.local/bin$X_PATHS$X_TOOL_PATHS$RUBY_PATHS"
 unset PATH_RUBY
 
 PYTHONPATH="$HOME/.local"

@@ -16,7 +16,9 @@ flags = [
 # Includes
 '-I', '.',
 '-I', 'ccan',
-'-I', 'penny'
+'-I', 'penny',
+'-I', 'include',
+'-I', 'arch/powerpc/include'
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -32,10 +34,8 @@ if compilation_database_folder:
 else:
   database = None
 
-
 def DirectoryOfThisScript():
   return os.path.dirname( os.path.abspath( __file__ ) )
-
 
 def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
   if not working_directory:

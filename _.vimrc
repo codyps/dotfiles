@@ -213,7 +213,7 @@ func! s:FTheader()
 endfunc
 
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = [ '~/g/peerduct/*', '~/g/doirc/*', '~/g/items/*', '~/g/trashdrive/*', '~/g/fount/*' ]
+let g:ycm_extra_conf_globlist = [ '~/g/peerduct/*', '~/g/doirc/*', '~/g/items/*', '~/g/trashdrive/*', '~/g/fount/*', '~/g/trifles/*', '~/trifles/**', '~/g/ridl/*']
 
 map <F1> <ESC>
 imap <F1> <ESC>

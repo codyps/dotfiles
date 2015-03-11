@@ -1,8 +1,10 @@
 [sendemail]
 	confirm = auto
 	smtpserver = /usr/bin/msmtp
+	#smtpserveroption = --read-envelope-from
 	chainreplyto = false
 	aliasfiletype = mutt
 	aliasesfile = ~/.muttaliases
+	envelopesender = auto
 
 # vim: ft=gitconfig

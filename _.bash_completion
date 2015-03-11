@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-for i in "~/x-tools/*"; do
+for i in "~/x/*"; do
 	d=$i/etc/bash_completion.d
 	if [ -d "$d" ]; then
 		for f in "$d/*"; do
