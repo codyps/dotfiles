@@ -55,3 +55,6 @@ PATH=${PATH##:}
 PATH=${PATH%%:}
 PATH=${PATH/:://}
 export PATH
+
+# added by travis gem
+[ -f /home/cody/.travis/travis.sh ] && source /home/cody/.travis/travis.sh

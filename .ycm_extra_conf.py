@@ -10,7 +10,7 @@ flags = [
 '-Wextra',
 '-Werror',
 # Determines header file lang
-'-std=gnu11',
+'-std=gnu++11',
 # Source file lang
 '-x', 'c',
 # Includes
