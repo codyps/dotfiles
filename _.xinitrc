@@ -9,8 +9,8 @@ echo "====== $(date) ====== "
 echo "LAUNCH"
 #exec ck-launch-session --sh-syntax --exit-with-session i3
 
-if which dbus-launch >/dev/null; then
-	exec dbus-launch i3
-else
+#if which dbus-launch >/dev/null; then
+#	exec dbus-launch i3
+#else
 	exec i3
-fi
+#fi
