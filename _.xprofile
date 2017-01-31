@@ -10,7 +10,8 @@ xset -b
 xrandr --dpi 125
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xdefaults &
-dropbox start >/dev/null  &
+syncthing-gtk --minimized &
+transmission-gtk --minimized &
 redshift -l 45:-122 &
 type prlcc >/dev/null 2>&1 && prlcc &
 
