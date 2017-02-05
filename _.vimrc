@@ -14,6 +14,7 @@ if v:progname =~? "evim"
   finish
 endif
 
+let mapleader=" "
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -212,8 +213,19 @@ func! s:FTheader()
   endif
 endfunc
 
-let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = [ '~/g/peerduct/*', '~/g/doirc/*', '~/g/items/*', '~/g/trashdrive/*', '~/g/fount/*', '~/g/trifles/*', '~/trifles/**', '~/g/ridl/*']
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf_2.py'
+let g:ycm_extra_conf_globlist = [ '~/g/peerduct/*', '~/g/doirc/*', '~/g/items/*', '~/g/trashdrive/*', '~/g/fount/*', '~/g/trifles/*', '~/trifles/**', '~/g/ridl/*', '~/H/titan/*']
 
 map <F1> <ESC>
 imap <F1> <ESC>
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>

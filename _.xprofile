@@ -6,6 +6,8 @@ xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -corne
 # Only reenable if a way to mix the beep into audio can be found.
 xset -b
 
+# good for my monitor @ work (seems like new prl broke dpi)
+xrandr --dpi 125
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xdefaults &
 syncthing-gtk --minimized &

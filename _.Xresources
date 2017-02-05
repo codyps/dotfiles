@@ -7,8 +7,8 @@
 Rxvt*scrollBar: false
 Rxvt*termName: rxvt-256color
 Rxvt*xftAntialias: true
-Rxvt*font: xft:DejaVu Sans Mono-9.5
-URxvt*font: xft:DejaVu Sans Mono-9.5
+Rxvt*font: xft:DejaVu Sans Mono-12
+URxvt*font: xft:DejaVu Sans Mono-12
 
 *Rxvt*meta8: false
 !Rxvt*foreground: LightGray
