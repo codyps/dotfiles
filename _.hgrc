@@ -14,9 +14,12 @@ method = msmtp
 [diff]
 git=1
 
+[ui]
+merge = internal:merge3
+
 [extensions]
 hgext.patchbomb=
-hgext.mq=
+mq=
 #mbox=~/m/hgmbox/mbox.py
 churn=
 progress=

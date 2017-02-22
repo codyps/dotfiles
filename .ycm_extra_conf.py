@@ -10,7 +10,7 @@ flags = [
 '-Wextra',
 '-Werror',
 # Determines header file lang
-'-std=gnu11',
+'-std=gnu++11',
 # Source file lang
 '-x', 'c',
 # Includes
@@ -18,7 +18,7 @@ flags = [
 '-I', 'ccan',
 '-I', 'penny',
 '-I', 'include',
-'-I', 'arch/powerpc/include'
+'-I', 'arch/x86/include'
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -84,3 +84,4 @@ def FlagsForFile( filename ):
     'flags': final_flags,
     'do_cache': True
   }
+

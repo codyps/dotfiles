@@ -1,4 +1,5 @@
 [user]
 	name = Cody P Schafer
+	#email = cschafer@cybexintl.com
 	email = dev@codyps.com
 # vim: ft=gitconfig
