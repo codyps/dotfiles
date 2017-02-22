@@ -17,7 +17,7 @@ git=1
 [extensions]
 hgext.patchbomb=
 hgext.mq=
-mbox=~/m/hgmbox/mbox.py
+#mbox=~/m/hgmbox/mbox.py
 churn=
 progress=
 rebase=
