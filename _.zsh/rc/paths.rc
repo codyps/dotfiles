@@ -28,11 +28,11 @@ lib_path_gen () {
 
 local X_TOOL_LD_PATHS X_TOOL_PATHS X_PATHS X_LD_PATHS
 X_TOOL_PATHS=`bin_path_gen $HOME/x-tools`
-X_TOOL_LD_PATHS=`lib_path_gen $HOME/x-tools`
+#X_TOOL_LD_PATHS=`lib_path_gen $HOME/x-tools`
 X_PATHS=`bin_path_gen $HOME/x`
-X_LD_PATHS=`lib_path_gen $HOME/x`
+#X_LD_PATHS=`lib_path_gen $HOME/x`
 
-export LD_RUN_PATH="${X_LD_PATHS##:}${X_TOOL_LD_PATHS}"
+#export LD_RUN_PATH="${X_LD_PATHS##:}${X_TOOL_LD_PATHS}"
 
 RUBY_PATHS=`bin_path_gen "$HOME/.gem/ruby"`
 

@@ -14,10 +14,13 @@ method = msmtp
 [diff]
 git=1
 
+[ui]
+merge = internal:merge3
+
 [extensions]
 hgext.patchbomb=
-hgext.mq=
-mbox=~/m/hgmbox/mbox.py
+mq=
+#mbox=~/m/hgmbox/mbox.py
 churn=
 progress=
 rebase=

@@ -161,6 +161,12 @@ bindsym $mod+Ctrl+Right resize grow right 2px or 2ppt
 bindsym $mod+Ctrl+Up    resize grow up    2px or 2ppt
 bindsym $mod+Ctrl+Down  resize grow down  2px or 2ppt
 
+#bindsym Shift+XF86MonBrightnessUp exec xbacklight -set 40
+#bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+#bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
+#bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 #bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 10
 #bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 5

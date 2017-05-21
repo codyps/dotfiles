@@ -1,5 +1,5 @@
 #! /bin/sh
-LOCK="i3lock -d -c 000000"
+LOCK="i3lock -n -d -c 000000"
 xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
 
 # Disable beeping (setterm can also configure)
@@ -8,16 +8,21 @@ xset -b
 
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xdefaults &
-dropbox start >/dev/null  &
+syncthing-gtk --minimized &
+transmission-gtk --minimized &
 redshift -l 45:-122 &
-type prlcc >/dev/null 2>&1 && prlcc &
 
 autocutsel -selection CLIPBOARD -fork
 autocutsel -selection PRIMARY -fork
 urxvtd &
 
+# good for my monitor @ work (seems like new prl broke dpi)
 case $HOSTNAME in
 zero)
     pasystray &
+    ;;
+x)
+	xrandr --dpi 125
+	type prlcc >/dev/null 2>&1 && prlcc &
     ;;
 esac
