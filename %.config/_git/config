@@ -1,7 +1,7 @@
 [include]
 	path = general
 	path = msmtp
-	path = id
+	path = id.bg
 	path = ~/priv/gitconfig
 
 # vim: ft=gitconfig
