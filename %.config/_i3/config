@@ -11,6 +11,7 @@
 
 set $mod Mod4
 
+#set $mod Mod1
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
@@ -18,7 +19,9 @@ set $mod Mod4
 # is used in the bar {} block below.
 #font pango:monospace 8
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font -*-fixed-*-*-*-*-9-*-*-*-*-*-iso10646-1
+#font -*-fixed-*-*-*-*-9-*-*-*-*-*-iso10646-1
+font pango:DejaVu Sans Mono 8
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -27,9 +30,12 @@ floating_modifier $mod
 bindsym $mod+Return exec uxterm
 
 # Lock screen
-bindsym $mod+p exec sh -c "xset dpms force off"
-bindsym $mod+Shift+p exec sh -c "xset dpms 0 0 0"
-bindsym $mod+Ctrl+Shift+p exec sh -c "xset dpms 60 60 60"
+#bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
+#bindsym $mod+Shift+p exec sh -c "xautolock -disable"
+#bindsym $mod+Ctrl+Shift+p exec sh -c "xautolock -enable"
+bindsym $mod+p exec sh -c "xset s activate"
+bindsym $mod+Shift+p exec sh -c "xset s off"
+bindsym $mod+Ctrl+Shift+p exec sh -c "xset s on"
 
 # kill focused window
 bindsym $mod+Shift+q kill
