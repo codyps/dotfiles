@@ -9,11 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# super
 #set $mod Mod4
+# alt (_MAC_)
 set $mod Mod1
-
-#set $mod Mod1
-set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 # Font for window titles. Will also be used by the bar unless a different font
