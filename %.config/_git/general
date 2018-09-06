@@ -22,5 +22,9 @@
 	keepcr = no
 [rerere]
 	enabled = true
+[commit]
+	gpgSign = true
+[user]
+	signingkey = 881CEAC38C98647F6F660956794D748B8B8BF912
 
 # vim: ft=gitconfig
