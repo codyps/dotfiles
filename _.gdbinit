@@ -1,6 +1,7 @@
 set history size unlimited
 set history save on
 
+set python print-stack full
 
 define armex
   printf "EXEC_RETURN (LR):\n",

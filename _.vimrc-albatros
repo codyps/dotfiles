@@ -17,6 +17,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'editorconfig/editorconfig-vim'
+"Plugin 'alvan/vim-closetag.git'
 
 
 " All of your Plugins must be added before the following line
@@ -84,4 +85,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 let g:ycm_global_ycm_extra_conf = '~/d/dotfiles/.ycm_extra_conf_2.py'
 let g:ycm_extra_conf_globlist = ['~/b/*']
 let g:ycm_rust_src_path = substitute(system('rustc --print sysroot'), '\n\+$', '', '') . '/lib/rustlib/src/rust/src'
+
+autocmd FileType xml setlocal et sts=2 ts=2 sw=2
+"au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
