@@ -1,6 +1,7 @@
 #! /bin/sh
-LOCK="i3lock -n -d -c 000000"
-xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
+LOCK="i3lock -n -c 000000"
+#xautolock -locker "$LOCK" -nowlocker "$LOCK" -corners +-0- -cornerdelay 2 -cornerredelay 10 &
+xss-lock -- $LOCK &
 
 # Disable beeping (setterm can also configure)
 # Only reenable if a way to mix the beep into audio can be found.
@@ -8,7 +9,6 @@ xset -b
 
 xsetroot -solid '#222e45' & # 34,46,69
 xrdb -merge ~/dotfiles/_.Xdefaults &
-syncthing-gtk --minimized &
 transmission-gtk --minimized &
 redshift -l 45:-122 &
 
