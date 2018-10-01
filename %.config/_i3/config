@@ -27,7 +27,8 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec uxterm
+#bindsym $mod+Return exec uxterm
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Lock screen
 #bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
