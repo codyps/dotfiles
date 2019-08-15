@@ -3,7 +3,9 @@
 	path = msmtp
 	path = id
 	path = ~/priv/gitconfig
-[user]
-	signingkey = 794D748B8B8BF912
 
 # vim: ft=gitconfig
+[advice]
+	detachedHead = false
+[color "diff"]
+	whitespace = red reverse
