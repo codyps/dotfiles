@@ -5,7 +5,3 @@
 	path = ~/priv/gitconfig
 
 # vim: ft=gitconfig
-[advice]
-	detachedHead = false
-[color "diff"]
-	whitespace = red reverse

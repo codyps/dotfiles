@@ -26,5 +26,9 @@
 	gpgSign = true
 [user]
 	signingkey = 881CEAC38C98647F6F660956794D748B8B8BF912
+[advice]
+	detachedHead = false
+[color "diff"]
+	whitespace = red reverse
 
 # vim: ft=gitconfig
