@@ -28,6 +28,88 @@ HEADER_EXTENSIONS = [
     '.H'
 ]
 
+"""
+Potential "top-level" markers:
+    - `Jenkinsfile`, `bors.toml`, `meson_options.txt`
+    - `README.md`: somewhat risky, folks might place readmes in subdirs
+    - `docs/`: again, might not always work out
+    - `subprojects/`: (meson)
+    - `CATKIN_IGNORE` (questionable)
+    - `debian/`: often placed in `contrib` folders, not top-level
+"""
+
+def GlobNearest(path, target):
+    """
+    Iterate upward in `path`, trying to match that dir concatenated with
+    `target` using glob.
+    """
+    def next_nearest(path, target):
+        parent = os.path.dirname(os.path.abspath(path))
+        if parent == path:
+            raise RuntimeError("Could not find " + target)
+        return GlobNearest(parent, target)
+
+    candidate = os.path.join(path, *target)
+    result = glob.glob(candidate)
+    if result:
+        result = [x for x in result if os.path.isdir(x)]
+        if len(result) == 0:
+            logging.warning("All potential dirs were not dirs")
+            return next_nearest(path, target)
+
+        if len(result) > 1:
+            logging.warning("Found multiple build dirs: {}".format(result))
+            raise RuntimeError("Found Multiple")
+        logging.info("Found nearest " + target + " at " + candidate)
+        return candidate;
+    else:
+        return next_nearest(path, target)
+
+
+def FindNearest(path, target):
+    candidate = os.path.join(path, target)
+    if(os.path.isfile(candidate) or os.path.isdir(candidate)):
+        logging.info("Found nearest " + target + " at " + candidate)
+        return candidate;
+    else:
+        parent = os.path.dirname(os.path.abspath(path));
+        if(parent == path):
+            raise RuntimeError("Could not find " + target);
+        return FindNearest(parent, target)
+
+
+def GuessBuildDirectory(filename):
+    """
+    Given a filename, look upwards until we find something that appears to be a
+    build directory
+    """
+
+    path = os.path.dirname(filename)
+    result = None
+    try:
+        result = FindNearest(path, ["_b"])
+    except:
+        pass
+
+    if result:
+        return os.path.split(result[0])
+
+    result = os.path.join(DirectoryOfThisScript(), "_b")
+
+    if os.path.exists(result):
+        return result
+
+    result = glob.glob(os.path.join(DirectoryOfThisScript(),
+                                    "_b*", ".ninja_log"))
+
+    if not result:
+        return ""
+
+    if 1 != len(result):
+        return ""
+
+    return os.path.split(result[0])[0]
+
 def IsHeaderFile(filename):
     extension = os.path.splitext(filename)[1]
     return extension in HEADER_EXTENSIONS
@@ -43,17 +125,6 @@ def GetCompilationInfoForFile(database, filename):
                     return compilation_info
         return None
     return database.GetCompilationInfoForFile(filename)
-
-def FindNearest(path, target):
-    candidate = os.path.join(path, target)
-    if(os.path.isfile(candidate) or os.path.isdir(candidate)):
-        logging.info("Found nearest " + target + " at " + candidate)
-        return candidate;
-    else:
-        parent = os.path.dirname(os.path.abspath(path));
-        if(parent == path):
-            raise RuntimeError("Could not find " + target);
-        return FindNearest(parent, target)
 
 def MakeRelativePathsInFlagsAbsolute(flags, working_directory):
     if not working_directory:
