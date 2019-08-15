@@ -29,6 +29,8 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec uxterm
 bindsym $mod+Return exec urxvtc
+bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Ctrl+Return exec xterm
 
 # Lock screen
 #bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"

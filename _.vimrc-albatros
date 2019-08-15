@@ -51,10 +51,12 @@ set modeline
 set modelines=5
 
 set encoding=utf-8
-let g:SimpylFold_docstring_preview=1
+let g:SimplyFold_docstring_preview=1
 
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+
 
 "python with virtualenv support
 "py << EOF
@@ -85,6 +87,8 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 let g:ycm_global_ycm_extra_conf = '~/d/dotfiles/.ycm_extra_conf_2.py'
 let g:ycm_extra_conf_globlist = ['~/b/*']
 let g:ycm_rust_src_path = substitute(system('rustc --print sysroot'), '\n\+$', '', '') . '/lib/rustlib/src/rust/src'
+" disable for now
+let g:ycm_use_clangd = 0
 
 autocmd FileType xml setlocal et sts=2 ts=2 sw=2
 "au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
