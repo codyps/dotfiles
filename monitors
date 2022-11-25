@@ -1,0 +1,7 @@
+#! /bin/bash
+set -euf -o pipefail
+
+xrandr --output DP-1-4 --off
+xrandr --output DP-1-5 --off
+
+xrandr --output DP-1-5 --above eDP1 --auto --output DP-1-4 --right-of DP-1-5 --auto

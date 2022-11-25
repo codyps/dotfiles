@@ -1,1 +1,2 @@
 let g:ycm_rust_src_path = substitute(system('rustc --print sysroot'), '\n\+$', '', '') . '/lib/rustlib/src/rust/src'
+let g:ycm_server_python_interpreter = '/usr/bin/python2'

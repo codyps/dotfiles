@@ -10,9 +10,9 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # super
-#set $mod Mod4
+set $mod Mod4
 # alt (_MAC_)
-set $mod Mod1
+#set $mod Mod1
 
 # font for window titles. ISO 10646 = Unicode
 # Font for window titles. Will also be used by the bar unless a different font
@@ -28,7 +28,9 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec uxterm
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvtc
+bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Ctrl+Return exec xterm
 
 # Lock screen
 #bindsym $mod+p exec sh -c "xautolock -enable && xautolock -locknow"
@@ -186,8 +188,10 @@ bindsym $mod+Ctrl+Down  resize grow down  2px or 2ppt
 #bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
 #bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 
-bindsym XF86AudioRaiseVolume exec amixer set Master 1+
-bindsym XF86AudioLowerVolume exec amixer set Master 1-
+bindsym Shift+XF86AudioRaiseVolume exec amixer set Master 1%+
+bindsym Shift+XF86AudioLowerVolume exec amixer set Master 1%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute        exec amixer set Master toggle
 bindsym XF86AudioMicMute     exec amixer set Capture toggle
 
