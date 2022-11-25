@@ -6,16 +6,26 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
+
+" Language related
+
+" lang, Python
+"Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'tmhedberg/SimpylFold'
+
+" lang, Generic
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+
+" UI
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" config
 Plugin 'editorconfig/editorconfig-vim'
 
 
@@ -36,6 +46,7 @@ set foldlevel=99
 
 nnoremap <space> za
 
+" open last edited position
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
@@ -44,7 +55,6 @@ au FileType python setlocal sts=4 sw=4 ts=4 et tw=79
 au FileType cmake  setlocal sts=2 sw=2 ts=2 et
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 set modeline
 set modelines=5

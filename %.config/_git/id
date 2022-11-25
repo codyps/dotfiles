@@ -1,5 +1,6 @@
 [user]
 	name = Cody P Schafer
-	#email = cschafer@cybexintl.com
 	email = dev@codyps.com
+[user]
+	signingkey = "794D748B8B8BF912"
 # vim: ft=gitconfig

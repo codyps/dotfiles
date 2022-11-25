@@ -1,7 +1,9 @@
 .*.swp
 .*.swo
 *~
+.DS_Store
 
 # Maybe these shouldn't be here
 *.[oda]
 *.pyc
+

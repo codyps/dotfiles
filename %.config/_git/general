@@ -22,7 +22,11 @@
 	keepcr = no
 [rerere]
 	enabled = true
-#[commit]
-#	gpgSign = true
+[tag]
+	gpgSign = true
+[commit]
+	gpgSign = true
+[push]
+	gpgSign = if-asked
 
 # vim: ft=gitconfig
